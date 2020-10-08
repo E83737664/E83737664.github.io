@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ds-b | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Study" />
+  
+  
+  
+  
+  <meta name="description" content="04-树5 Root of AVL Tree (25 分)An AVL tree is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DS-B">
+<meta property="og:url" content="http://example.com/2019/10/20/DS-B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="04-树5 Root of AVL Tree (25 分)An AVL tree is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190505134810442.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190505134855384.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190505134904380.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190505134911109.png">
+<meta property="article:published_time" content="2019-10-20T15:31:41.000Z">
+<meta property="article:modified_time" content="2020-10-08T14:42:38.726Z">
+<meta property="article:author" content="Neoth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190505134810442.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/resizeApi.png">
+  <link rel="apple-touch-icon" href="/css/images/resizeApi.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("/css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("/css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("/css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/resizeApi.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-DS-B" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      DS-B
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/10/20/DS-B/" class="article-date">
+	  <time datetime="2019-10-20T15:31:41.000Z" itemprop="datePublished">2019-10-20</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="04-树5-Root-of-AVL-Tree-25-分"><a href="#04-树5-Root-of-AVL-Tree-25-分" class="headerlink" title="04-树5 Root of AVL Tree (25 分)"></a>04-树5 Root of AVL Tree (25 分)</h1><p>An AVL tree is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more than one, rebalancing is done to restore this property. Figures 1-4 illustrate the rotation rules.</p>
+<p>  <img src="https://img-blog.csdnimg.cn/20190505134810442.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20190505134855384.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20190505134904380.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20190505134911109.png" alt="在这里插入图片描述"></p>
+<p>Now given a sequence of insertions, you are supposed to tell the root of the resulting AVL tree.</p>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. For each case, the first line contains a positive integer N (≤20) which is the total number of keys to be inserted. Then N distinct integer keys are given in the next line. All the numbers in a line are separated by a space.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each test case, print the root of the resulting AVL tree in one line.</p>
+<h2 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1:"></a>Sample Input 1:</h2><p>5<br>88 70 61 96 120</p>
+<h2 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1:"></a>Sample Output 1:</h2><p>70</p>
+<h2 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input 2:"></a>Sample Input 2:</h2><p>7<br>88 70 61 96 120 90 65</p>
+<h2 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output 2:"></a>Sample Output 2:</h2><p>88</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1.高度利用递归求解，不设height域</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct AVLNode* AVL;</span><br><span class="line">struct AVLNode &#123;</span><br><span class="line">    int data;</span><br><span class="line">    AVL left;</span><br><span class="line">    AVL right;</span><br><span class="line">&#125;;</span><br><span class="line">int GetHight(AVL T) &#123;</span><br><span class="line">    if(!T) return 0;</span><br><span class="line">    else return max(GetHight(T-&gt;left), GetHight(T-&gt;right)) + 1;</span><br><span class="line">&#125;</span><br><span class="line">AVL LeftLeft(AVL T)&#123;</span><br><span class="line">    AVL temp &#x3D;  T-&gt;left;</span><br><span class="line">    T-&gt;left &#x3D; temp-&gt;right;</span><br><span class="line">    temp-&gt;right &#x3D; T;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line">AVL RightRight(AVL T) &#123;</span><br><span class="line">    AVL temp &#x3D; T-&gt;right;</span><br><span class="line">    T-&gt;right &#x3D; temp-&gt;left;</span><br><span class="line">    temp-&gt;left &#x3D; T;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line">AVL LeftRight(AVL T) &#123;</span><br><span class="line">    AVL temp &#x3D; T-&gt;left;</span><br><span class="line">    T-&gt;left &#x3D; RightRight(temp);</span><br><span class="line">    return LeftLeft(T);</span><br><span class="line">&#125;</span><br><span class="line">AVL RightLeft(AVL T) &#123;</span><br><span class="line">    AVL temp &#x3D; T-&gt;right;</span><br><span class="line">    T-&gt;right &#x3D; LeftLeft (temp);</span><br><span class="line">    return RightRight(T);</span><br><span class="line">&#125;</span><br><span class="line">AVL Insert(AVL T, int data) &#123;</span><br><span class="line">    if(!T) &#123;</span><br><span class="line">        T &#x3D;  (AVL)malloc (sizeof(struct AVLNode));</span><br><span class="line">        T-&gt;data &#x3D; data;</span><br><span class="line">        T-&gt;left &#x3D; NULL;</span><br><span class="line">        T-&gt;right &#x3D; NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(data &lt; T-&gt;data)&#123;</span><br><span class="line">        T-&gt;left &#x3D; Insert(T-&gt;left, data);</span><br><span class="line">        if(GetHight(T-&gt;left) - GetHight(T-&gt;right) &#x3D;&#x3D; 2) &#123;</span><br><span class="line">            if(data &lt; T-&gt;left-&gt;data) &#123;</span><br><span class="line">                T &#x3D; LeftLeft(T);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                T &#x3D; LeftRight(T);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(data &gt; T-&gt;data)&#123;</span><br><span class="line">        T-&gt;right &#x3D; Insert(T-&gt;right, data);</span><br><span class="line">        if(GetHight(T-&gt;left) - GetHight(T-&gt;right) &#x3D;&#x3D; -2) &#123;</span><br><span class="line">            if(data &gt; T-&gt;right-&gt;data) &#123;</span><br><span class="line">                T &#x3D; RightRight(T);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                T &#x3D; RightLeft(T);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	return T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    AVL T &#x3D; NULL;</span><br><span class="line">    int num, data;</span><br><span class="line">    cin &gt;&gt; num;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">        cin &gt;&gt; data;</span><br><span class="line">        T &#x3D; Insert(T, data);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; T-&gt;data;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="04-树6-Complete-Binary-Search-Tree-30-分"><a href="#04-树6-Complete-Binary-Search-Tree-30-分" class="headerlink" title="04-树6 Complete Binary Search Tree (30 分)"></a>04-树6 Complete Binary Search Tree (30 分)</h1><p>A Binary Search Tree (BST) is recursively defined as a binary tree which has the following properties:</p>
+<p>The left subtree of a node contains only nodes with keys less than the node’s key.<br>The right subtree of a node contains only nodes with keys greater than or equal to the node’s key.<br>Both the left and right subtrees must also be binary search trees.<br>A Complete Binary Tree (CBT) is a tree that is completely filled, with the possible exception of the bottom level, which is filled from left to right.</p>
+<p>Now given a sequence of distinct non-negative integer keys, a unique BST can be constructed if it is required that the tree must also be a CBT. You are supposed to output the level order traversal sequence of this BST.</p>
+<h2 id="Input-Specification-1"><a href="#Input-Specification-1" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. For each case, the first line contains a positive integer N (≤1000). Then N distinct non-negative integer keys are given in the next line. All the numbers in a line are separated by a space and are no greater than 2000.</p>
+<h2 id="Output-Specification-1"><a href="#Output-Specification-1" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each test case, print in one line the level order traversal sequence of the corresponding complete binary search tree. All the numbers in a line must be separated by a space, and there must be no extra space at the end of the line.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h2><p>10<br>1 2 3 4 5 6 7 8 9 0</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h2><p>6 3 8 1 5 7 9 0 2 4</p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>先假装建树，中序搜索，找到位置填入<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[2100];</span><br><span class="line">int main() &#123;</span><br><span class="line">    int num;</span><br><span class="line">    int cnt &#x3D; 0;</span><br><span class="line">    cin &gt;&gt; num;</span><br><span class="line">    vector&lt;int&gt; input(num);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; num; i++)&#123;</span><br><span class="line">        cin &gt;&gt; input[i];</span><br><span class="line">    &#125;</span><br><span class="line">	sort(input.begin(), input.end());</span><br><span class="line">    stack&lt;int&gt; s;</span><br><span class="line">    s.push(1);</span><br><span class="line">    while(s.size() &gt; 0)&#123;    </span><br><span class="line">        int p &#x3D; s.top();</span><br><span class="line">        while(p &lt;&#x3D; num)&#123; p &#x3D; p * 2; s.push(p);&#125;</span><br><span class="line">        s.pop();</span><br><span class="line">        if(s.size() &gt; 0)&#123;</span><br><span class="line">            p &#x3D; s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            a[p] &#x3D; input[cnt++];</span><br><span class="line">            s.push(2 * p + 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i &#x3D; 1; i &lt;&#x3D; num; i++)&#123;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; a[i] ;</span><br><span class="line">        if(i &lt; num) cout &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="04-树7-二叉搜索树的操作集-30-分"><a href="#04-树7-二叉搜索树的操作集-30-分" class="headerlink" title="04-树7 二叉搜索树的操作集 (30 分)"></a>04-树7 二叉搜索树的操作集 (30 分)</h1>本题要求实现给定二叉搜索树的5种常用操作。</li>
+</ol>
+<h2 id="函数接口定义："><a href="#函数接口定义：" class="headerlink" title="函数接口定义："></a>函数接口定义：</h2><p>BinTree Insert( BinTree BST, ElementType X );<br>BinTree Delete( BinTree BST, ElementType X );<br>Position Find( BinTree BST, ElementType X );<br>Position FindMin( BinTree BST );<br>Position FindMax( BinTree BST );</p>
+<h2 id="其中BinTree结构定义如下："><a href="#其中BinTree结构定义如下：" class="headerlink" title="其中BinTree结构定义如下："></a>其中BinTree结构定义如下：</h2><p>typedef struct TNode *Position;<br>typedef Position BinTree;<br>struct TNode{<br>    ElementType Data;<br>    BinTree Left;<br>    BinTree Right;<br>};<br>函数Insert将X插入二叉搜索树BST并返回结果树的根结点指针；<br>函数Delete将X从二叉搜索树BST中删除，并返回结果树的根结点指针；如果X不在树中，则打印一行Not Found并返回原树的根结点指针；<br>函数Find在二叉搜索树BST中找到X，返回该结点的指针；如果找不到则返回空指针；<br>函数FindMin返回二叉搜索树BST中最小元结点的指针；<br>函数FindMax返回二叉搜索树BST中最大元结点的指针。</p>
+<h2 id="裁判测试程序样例："><a href="#裁判测试程序样例：" class="headerlink" title="裁判测试程序样例："></a>裁判测试程序样例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">typedef int ElementType;</span><br><span class="line">typedef struct TNode *Position;</span><br><span class="line">typedef Position BinTree;</span><br><span class="line">struct TNode&#123;</span><br><span class="line">    ElementType Data;</span><br><span class="line">    BinTree Left;</span><br><span class="line">    BinTree Right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void PreorderTraversal( BinTree BT ); &#x2F;* 先序遍历，由裁判实现，细节不表 *&#x2F;</span><br><span class="line">void InorderTraversal( BinTree BT );  &#x2F;* 中序遍历，由裁判实现，细节不表 *&#x2F;</span><br><span class="line"></span><br><span class="line">BinTree Insert( BinTree BST, ElementType X );</span><br><span class="line">BinTree Delete( BinTree BST, ElementType X );</span><br><span class="line">Position Find( BinTree BST, ElementType X );</span><br><span class="line">Position FindMin( BinTree BST );</span><br><span class="line">Position FindMax( BinTree BST );</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    BinTree BST, MinP, MaxP, Tmp;</span><br><span class="line">    ElementType X;</span><br><span class="line">    int N, i;</span><br><span class="line"></span><br><span class="line">    BST &#x3D; NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">    for ( i&#x3D;0; i&lt;N; i++ ) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;X);</span><br><span class="line">        BST &#x3D; Insert(BST, X);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Preorder:&quot;); PreorderTraversal(BST); printf(&quot;\n&quot;);</span><br><span class="line">    MinP &#x3D; FindMin(BST);</span><br><span class="line">    MaxP &#x3D; FindMax(BST);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">    for( i&#x3D;0; i&lt;N; i++ ) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;X);</span><br><span class="line">        Tmp &#x3D; Find(BST, X);</span><br><span class="line">        if (Tmp &#x3D;&#x3D; NULL) printf(&quot;%d is not found\n&quot;, X);</span><br><span class="line">        else &#123;</span><br><span class="line">            printf(&quot;%d is found\n&quot;, Tmp-&gt;Data);</span><br><span class="line">            if (Tmp&#x3D;&#x3D;MinP) printf(&quot;%d is the smallest key\n&quot;, Tmp-&gt;Data);</span><br><span class="line">            if (Tmp&#x3D;&#x3D;MaxP) printf(&quot;%d is the largest key\n&quot;, Tmp-&gt;Data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">    for( i&#x3D;0; i&lt;N; i++ ) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;X);</span><br><span class="line">        BST &#x3D; Delete(BST, X);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Inorder:&quot;); InorderTraversal(BST); printf(&quot;\n&quot;);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* 你的代码将被嵌在这里 *&#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h2><p>10<br>5 8 6 2 4 1 0 10 9 7<br>5<br>6 3 10 0 5<br>5<br>5 7 0 10 3</p>
+<h2 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h2><p>Preorder: 5 2 1 0 4 8 6 7 10 9<br>6 is found<br>3 is not found<br>10 is found<br>10 is the largest key<br>0 is found<br>0 is the smallest key<br>5 is found<br>Not Found<br>Inorder: 1 2 4 6 8 9</p>
+<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><ol>
+<li>当删除节点左右孩子都不空时，找到左子树的最大节点（可以不用循环）</li>
+<li>对递归的出口不是很清晰，diyibianbug出耗费了很长时间 若递归出不加return，那只有第一层可以正常返回，第二层顺序执行完便强制返回0.</li>
+<li>left！= null &amp;&amp; right == null  – right == null &amp;&amp; left != null …….<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">BinTree Delete( BinTree BST, ElementType X )&#123;</span><br><span class="line">	if(BST &#x3D;&#x3D; NULL)&#123;   printf(&quot;Not Found\n&quot;); return BST;&#125;</span><br><span class="line">    else if(BST-&gt;Data &#x3D;&#x3D; X)&#123;</span><br><span class="line">        if(BST-&gt;Left !&#x3D; NULL &amp;&amp; BST-&gt;Right !&#x3D; NULL)&#123;</span><br><span class="line">            BinTree p &#x3D; FindMax(BST-&gt;Left);</span><br><span class="line">			&#x2F;&#x2F;while(p-&gt;Right) p &#x3D; p-&gt;Right;</span><br><span class="line">			p-&gt;Right &#x3D; BST-&gt;Right;</span><br><span class="line">            p &#x3D; BST-&gt;Left;</span><br><span class="line">            free(BST);</span><br><span class="line">            return p; </span><br><span class="line">        &#125;</span><br><span class="line">        else if(BST-&gt;Left !&#x3D; NULL &amp;&amp; BST-&gt;Right &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">            BinTree p &#x3D; BST-&gt;Left;</span><br><span class="line">            free(BST);</span><br><span class="line">            return p;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(BST-&gt;Right !&#x3D; NULL &amp;&amp; BST-&gt;Left &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">            BinTree p &#x3D; BST-&gt;Right;</span><br><span class="line">            free(BST);</span><br><span class="line">            return p;</span><br><span class="line">        &#125;</span><br><span class="line">		else if((BST-&gt;Left !&#x3D; NULL) &amp;&amp; (BST-&gt;Right &#x3D;&#x3D; NULL))&#123;</span><br><span class="line">			BinTree p &#x3D; BST;</span><br><span class="line">			free(p);</span><br><span class="line">			return NULL;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(X &lt; BST-&gt;Data) &#123;</span><br><span class="line">        BST-&gt;Left &#x3D; Delete(BST-&gt;Left, X);</span><br><span class="line">		return BST;</span><br><span class="line">    &#125;</span><br><span class="line">	else if(X &gt; BST-&gt;Data)&#123; BST-&gt;Right &#x3D; Delete(BST-&gt;Right, X); return BST;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BinTree Insert( BinTree BST, ElementType X ) &#123;</span><br><span class="line">    if(BST &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">        BST &#x3D; (BinTree)malloc(sizeof(Position));</span><br><span class="line">        BST-&gt;Data &#x3D; X;</span><br><span class="line">        BST-&gt;Left &#x3D; NULL;</span><br><span class="line">        BST-&gt;Right &#x3D; NULL;</span><br><span class="line">  </span><br><span class="line">    &#125;</span><br><span class="line">	else if(X &gt; BST-&gt;Data)  BST-&gt;Right &#x3D;Insert(BST-&gt;Right, X);</span><br><span class="line">    else if(X &lt; BST-&gt;Data)  BST-&gt;Left &#x3D; Insert(BST-&gt;Left, X);</span><br><span class="line">	return BST;</span><br><span class="line">&#125;&#x2F;&#x2F;diyidabug</span><br><span class="line"> </span><br><span class="line">Position Find( BinTree BST, ElementType X )&#123;</span><br><span class="line">    if(BST &#x3D;&#x3D; NULL) return 0;</span><br><span class="line">    else if(BST-&gt;Data &#x3D;&#x3D; X) return BST;</span><br><span class="line">    else if(X &lt; BST-&gt;Data) Find(BST-&gt;Left, X);</span><br><span class="line">    else Find(BST-&gt;Right, X);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Position FindMin( BinTree BST )&#123;</span><br><span class="line">    if(!BST) return BST;</span><br><span class="line">    if(BST-&gt;Left &#x3D;&#x3D; NULL) return BST;</span><br><span class="line">    else FindMin(BST-&gt;Left);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Position FindMax( BinTree BST )&#123;</span><br><span class="line">    if(!BST) return BST;</span><br><span class="line">    if(BST-&gt;Right &#x3D;&#x3D; NULL) return BST;</span><br><span class="line">    else FindMax(BST-&gt;Right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="完全实现"><a href="#完全实现" class="headerlink" title="完全实现"></a>完全实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef int ElementType;</span><br><span class="line">typedef struct TNode *Position;</span><br><span class="line">typedef Position BinTree;</span><br><span class="line">struct TNode&#123;</span><br><span class="line">    ElementType Data;</span><br><span class="line">    BinTree Left;</span><br><span class="line">    BinTree Right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void PreorderTraversal( BinTree BT ); &#x2F;* 先序遍历，由裁判实现，细节不表 *&#x2F;</span><br><span class="line">void InorderTraversal( BinTree BT );  &#x2F;* 中序遍历，由裁判实现，细节不表 *&#x2F;</span><br><span class="line"></span><br><span class="line">BinTree Insert( BinTree BST, ElementType X );</span><br><span class="line">BinTree Delete( BinTree BST, ElementType X );</span><br><span class="line">Position Find( BinTree BST, ElementType X );</span><br><span class="line">Position FindMin( BinTree BST );</span><br><span class="line">Position FindMax( BinTree BST );</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    BinTree BST, MinP, MaxP, Tmp;</span><br><span class="line">    ElementType X;</span><br><span class="line">    int N, i;</span><br><span class="line"></span><br><span class="line">    BST &#x3D; NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">    for ( i&#x3D;0; i&lt;N; i++ ) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;X);</span><br><span class="line">        BST &#x3D; Insert(BST, X);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Preorder:&quot;); PreorderTraversal(BST); printf(&quot;\n&quot;);</span><br><span class="line">    MinP &#x3D; FindMin(BST);</span><br><span class="line">    MaxP &#x3D; FindMax(BST);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">    for( i&#x3D;0; i&lt;N; i++ ) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;X);</span><br><span class="line">        Tmp &#x3D; Find(BST, X);</span><br><span class="line">        if (Tmp &#x3D;&#x3D; NULL) printf(&quot;%d is not found\n&quot;, X);</span><br><span class="line">        else &#123;</span><br><span class="line">            printf(&quot;%d is found\n&quot;, Tmp-&gt;Data);</span><br><span class="line">            if (Tmp&#x3D;&#x3D;MinP) printf(&quot;%d is the smallest key\n&quot;, Tmp-&gt;Data);</span><br><span class="line">            if (Tmp&#x3D;&#x3D;MaxP) printf(&quot;%d is the largest key\n&quot;, Tmp-&gt;Data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">    for( i&#x3D;0; i&lt;N; i++ ) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;X);</span><br><span class="line">        BST &#x3D; Delete(BST, X);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Inorder:&quot;); InorderTraversal(BST); printf(&quot;\n&quot;);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BinTree Delete( BinTree BST, ElementType X )&#123;</span><br><span class="line">	if(BST &#x3D;&#x3D; NULL)&#123;   printf(&quot;Not Found\n&quot;); return BST;&#125;</span><br><span class="line">    else if(BST-&gt;Data &#x3D;&#x3D; X)&#123;</span><br><span class="line">        if(BST-&gt;Left !&#x3D; NULL &amp;&amp; BST-&gt;Right !&#x3D; NULL)&#123;</span><br><span class="line">            BinTree p &#x3D; BST-&gt;Left;</span><br><span class="line">			while(p-&gt;Right) p &#x3D; p-&gt;Right;</span><br><span class="line">			p-&gt;Right &#x3D; BST-&gt;Right;</span><br><span class="line">            p &#x3D; BST-&gt;Left;</span><br><span class="line">            &#x2F;&#x2F;free(BST);</span><br><span class="line">            return p; </span><br><span class="line">        &#125;</span><br><span class="line">        else if(BST-&gt;Left !&#x3D; NULL &amp;&amp; BST-&gt;Right &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">            BinTree p &#x3D; BST-&gt;Left;</span><br><span class="line">            &#x2F;&#x2F;free(BST);</span><br><span class="line">            return p;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(BST-&gt;Right  !&#x3D; NULL &amp;&amp; BST-&gt;Left &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">            BinTree p &#x3D; BST-&gt;Right;</span><br><span class="line">            &#x2F;&#x2F;free(BST);</span><br><span class="line">            return p;</span><br><span class="line">        &#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			BinTree p &#x3D; BST;</span><br><span class="line">			&#x2F;&#x2F;free(p);</span><br><span class="line">			return NULL;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(X &lt; BST-&gt;Data) &#123;</span><br><span class="line">        BST-&gt;Left &#x3D; Delete(BST-&gt;Left, X);</span><br><span class="line">		return BST;</span><br><span class="line">    &#125;</span><br><span class="line">	else&#123; BST-&gt;Right &#x3D; Delete(BST-&gt;Right, X); return BST;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BinTree Insert( BinTree BST, ElementType X ) &#123;</span><br><span class="line">    if(BST &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">        BST &#x3D; (BinTree)malloc(sizeof(Position));</span><br><span class="line">        BST-&gt;Data &#x3D; X;</span><br><span class="line">        BST-&gt;Left &#x3D; NULL;</span><br><span class="line">        BST-&gt;Right &#x3D; NULL;</span><br><span class="line">  </span><br><span class="line">    &#125;</span><br><span class="line">	else if(X &gt; BST-&gt;Data)  BST-&gt;Right &#x3D;Insert(BST-&gt;Right, X);</span><br><span class="line">    else if(X &lt; BST-&gt;Data)  BST-&gt;Left &#x3D; Insert(BST-&gt;Left, X);</span><br><span class="line">	return BST;</span><br><span class="line">&#125;&#x2F;&#x2F;diyidabug</span><br><span class="line"> </span><br><span class="line">Position Find( BinTree BST, ElementType X )&#123;</span><br><span class="line">    if(BST &#x3D;&#x3D; NULL) return 0;</span><br><span class="line">    else if(BST-&gt;Data &#x3D;&#x3D; X) return BST;</span><br><span class="line">    else if(X &lt; BST-&gt;Data) Find(BST-&gt;Left, X);</span><br><span class="line">    else Find(BST-&gt;Right, X);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Position FindMin( BinTree BST )&#123;</span><br><span class="line">    if(BST-&gt;Left &#x3D;&#x3D; NULL) return BST;</span><br><span class="line">    else FindMin(BST-&gt;Left);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Position FindMax( BinTree BST )&#123;</span><br><span class="line">    if(BST-&gt;Right &#x3D;&#x3D; NULL) return BST;</span><br><span class="line">    else FindMax(BST-&gt;Right);</span><br><span class="line">&#125;</span><br><span class="line">void InorderTraversal( BinTree BT )&#123;</span><br><span class="line">    stack&lt;BinTree&gt; s;</span><br><span class="line">    s.push(BT);</span><br><span class="line">    while(s.size() &gt; 0)&#123;</span><br><span class="line">        BinTree temp &#x3D; s.top();</span><br><span class="line">        while(temp) &#123;temp &#x3D; temp-&gt;Left; s.push(temp);&#125;</span><br><span class="line">        s.pop();</span><br><span class="line">        if(s.size() &gt; 0)&#123;</span><br><span class="line">			temp &#x3D; s.top();</span><br><span class="line">		    s.pop();</span><br><span class="line">            cout  &lt;&lt;  temp-&gt;Data &lt;&lt; &quot; &quot;;</span><br><span class="line">            s.push(temp-&gt;Right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void PreorderTraversal( BinTree BT )&#123;</span><br><span class="line">    stack&lt;BinTree&gt; s;</span><br><span class="line">    s.push(BT);</span><br><span class="line">    while(s.size() &gt; 0)&#123;</span><br><span class="line">        BinTree temp &#x3D; s.top();</span><br><span class="line">        while(temp) &#123;   cout &lt;&lt;( temp-&gt;Data)&lt;&lt; &quot; &quot;;  temp &#x3D; temp-&gt;Left;  s.push(temp);&#125;</span><br><span class="line">        s.pop();</span><br><span class="line">  </span><br><span class="line">        if(s.size() &gt; 0)&#123;</span><br><span class="line">			temp &#x3D; s.top();</span><br><span class="line">			s.pop();</span><br><span class="line">            s.push(temp-&gt;Right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://s1.ax1x.com/2020/10/06/0UUsFU.md.png',
+  alipayImage: 'https://s1.ax1x.com/2020/10/06/0UUyYF.md.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Neoth</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/10/20/DS-B/" target="_blank" title="DS-B">http://example.com/2019/10/20/DS-B/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/06/%E8%80%83%E7%A0%94%E8%A7%84%E5%88%92/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          考研规划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/08/DS-A/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DS-A</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#04-%E6%A0%915-Root-of-AVL-Tree-25-%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">04-树5 Root of AVL Tree (25 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Specification"><span class="nav-number">1.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Specification"><span class="nav-number">1.2.</span> <span class="nav-text">Output Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-1"><span class="nav-number">1.3.</span> <span class="nav-text">Sample Input 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output-1"><span class="nav-number">1.4.</span> <span class="nav-text">Sample Output 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-2"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input 2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output-2"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output 2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.7.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.8.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#04-%E6%A0%916-Complete-Binary-Search-Tree-30-%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">04-树6 Complete Binary Search Tree (30 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Specification-1"><span class="nav-number">2.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Specification-1"><span class="nav-number">2.2.</span> <span class="nav-text">Output Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">2.3.</span> <span class="nav-text">Sample Input:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">2.4.</span> <span class="nav-text">Sample Output:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">2.5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">2.6.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#04-%E6%A0%917-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C%E9%9B%86-30-%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">04-树7 二叉搜索树的操作集 (30 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">函数接口定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%B8%ADBinTree%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">其中BinTree结构定义如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%81%E5%88%A4%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">裁判测试程序样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">3.4.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">3.5.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notes"><span class="nav-number">3.6.</span> <span class="nav-text">Notes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">3.7.</span> <span class="nav-text">code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.8.</span> <span class="nav-text">完全实现</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 Hexo All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Hexo
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Neoth All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

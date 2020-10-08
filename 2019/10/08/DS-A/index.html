@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ds-a | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Study" />
+  
+  
+  
+  
+  <meta name="description" content="02-线性结构1 两个有序链表序列的合并 （15 分)本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。 函数接口定义：List Merge( List L1, List L2 );其中List结构定义如下： typedef struct Node PtrToNode;struct Node {    ElementType Data; &#x2F; 存储结点数据 &#x2F;    Pt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DS-A">
+<meta property="og:url" content="http://example.com/2019/10/08/DS-A/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="02-线性结构1 两个有序链表序列的合并 （15 分)本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。 函数接口定义：List Merge( List L1, List L2 );其中List结构定义如下： typedef struct Node PtrToNode;struct Node {    ElementType Data; &#x2F; 存储结点数据 &#x2F;    Pt">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-10-08T15:31:33.000Z">
+<meta property="article:modified_time" content="2020-10-08T14:42:24.348Z">
+<meta property="article:author" content="Neoth">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/resizeApi.png">
+  <link rel="apple-touch-icon" href="/css/images/resizeApi.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("/css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("/css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("/css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/resizeApi.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-DS-A" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      DS-A
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/10/08/DS-A/" class="article-date">
+	  <time datetime="2019-10-08T15:31:33.000Z" itemprop="datePublished">2019-10-08</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="02-线性结构1-两个有序链表序列的合并-（15-分"><a href="#02-线性结构1-两个有序链表序列的合并-（15-分" class="headerlink" title="02-线性结构1 两个有序链表序列的合并 （15 分)"></a>02-线性结构1 两个有序链表序列的合并 （15 分)</h1><p>本题要求实现一个函数，将两个链表表示的递增整数序列合并为一个非递减的整数序列。</p>
+<h2 id="函数接口定义："><a href="#函数接口定义：" class="headerlink" title="函数接口定义："></a>函数接口定义：</h2><p>List Merge( List L1, List L2 );<br>其中List结构定义如下：</p>
+<p>typedef struct Node <em>PtrToNode;<br>struct Node {<br>    ElementType Data; /</em> 存储结点数据 <em>/<br>    PtrToNode   Next; /</em> 指向下一个结点的指针 <em>/<br>};<br>typedef PtrToNode List; /</em> 定义单链表类型 */<br>L1和L2是给定的带头结点的单链表，其结点存储的数据是递增有序的；函数Merge要将L1和L2合并为一个非递减的整数序列。应直接使用原序列中的结点，返回归并后的带头结点的链表头指针。</p>
+<h2 id="裁判测试程序样例："><a href="#裁判测试程序样例：" class="headerlink" title="裁判测试程序样例："></a>裁判测试程序样例：</h2><p>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;</p>
+<p>typedef int ElementType;<br>typedef struct Node *PtrToNode;<br>struct Node {<br>    ElementType Data;<br>    PtrToNode   Next;<br>};<br>typedef PtrToNode List;</p>
+<p>List Read(); /* 细节在此不表 <em>/<br>void Print( List L ); /</em> 细节在此不表；空链表将输出NULL */</p>
+<p>List Merge( List L1, List L2 );</p>
+<p>int main()<br>{<br>    List L1, L2, L;<br>    L1 = Read();<br>    L2 = Read();<br>    L = Merge(L1, L2);<br>    Print(L);<br>    Print(L1);<br>    Print(L2);<br>    return 0;<br>}</p>
+<p>/* 你的代码将被嵌在这里 */</p>
+<h2 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h2><p>3<br>1 3 5<br>5<br>2 4 6 8 10</p>
+<h2 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h2><p>1 2 3 4 5 6 8 10<br>NULL<br>NULL</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
+<li>题目简单，但读题不仔细，刚开始想用之前头节点直接当新的头，没考虑到输出L1 L2</li>
+<li>提交有问题一直说Node没有定义， 索性直接把所有的函数都具体实现一边，跑完没有问题。<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"> </span><br><span class="line">typedef int ElementType;</span><br><span class="line">typedef struct Node *PtrToNode;</span><br><span class="line">struct Node &#123;</span><br><span class="line">    ElementType Data;</span><br><span class="line">    PtrToNode   Next;</span><br><span class="line">&#125;;</span><br><span class="line">typedef PtrToNode List;</span><br><span class="line"> </span><br><span class="line">List Read(); &#x2F;* 细节在此表 *&#x2F;</span><br><span class="line">void Print( List L ); &#x2F;* 细节在此不表；空链表将输出NULL *&#x2F;</span><br><span class="line"> </span><br><span class="line">List Merge( List L1, List L2 );</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    List L1, L2, L;</span><br><span class="line">    L1 &#x3D; Read();</span><br><span class="line">    L2 &#x3D; Read();</span><br><span class="line">    L &#x3D; Merge(L1, L2);</span><br><span class="line">    Print(L);</span><br><span class="line">    Print(L1);</span><br><span class="line">    Print(L2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">List Read()&#123;</span><br><span class="line">	int num;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;num);</span><br><span class="line"> </span><br><span class="line">	List L &#x3D; (List)malloc(sizeof( Node));</span><br><span class="line">	L-&gt;Next &#x3D; NULL;</span><br><span class="line">	 </span><br><span class="line"> </span><br><span class="line">	List tail;</span><br><span class="line">	tail &#x3D; L;	 </span><br><span class="line">	for (int i &#x3D; 0; i &lt; num; ++i)</span><br><span class="line">	&#123;	</span><br><span class="line">		int data;</span><br><span class="line">		scanf(&quot;%d&quot;, &amp;data);</span><br><span class="line">		List pNode &#x3D; (List)malloc(sizeof(Node));</span><br><span class="line">		pNode -&gt; Data &#x3D; data;</span><br><span class="line">		tail -&gt; Next &#x3D; pNode;	 </span><br><span class="line">		tail &#x3D; pNode;			 </span><br><span class="line">	&#125;</span><br><span class="line">	tail -&gt; Next &#x3D; NULL;		 </span><br><span class="line">	return L;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void Print(List L)&#123;</span><br><span class="line">	List pNode &#x3D; L-&gt;Next; </span><br><span class="line">	if (pNode &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">		printf(&quot;NULL\n&quot;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	while(pNode !&#x3D; NULL)&#123;</span><br><span class="line">		printf(&quot;%d  &quot;, pNode-&gt;Data);</span><br><span class="line">		pNode &#x3D; pNode-&gt;Next;</span><br><span class="line">	&#125; </span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">List Merge( List L1, List L2 )</span><br><span class="line">&#123;</span><br><span class="line">    List L3&#x3D;(List)malloc(sizeof(Node));</span><br><span class="line">    List L&#x3D;L3;</span><br><span class="line">    List p&#x3D;L1-&gt;Next;</span><br><span class="line">    List q&#x3D;L2-&gt;Next;</span><br><span class="line">    while(p&amp;&amp;q)</span><br><span class="line">    &#123;</span><br><span class="line">        if(p-&gt;Data&lt;q-&gt;Data)</span><br><span class="line">        &#123;</span><br><span class="line">            L-&gt;Next&#x3D;p;</span><br><span class="line">            p&#x3D;p-&gt;Next;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            L-&gt;Next&#x3D;q;</span><br><span class="line">            q&#x3D;q-&gt;Next;</span><br><span class="line">        &#125;</span><br><span class="line">        L&#x3D;L-&gt;Next;</span><br><span class="line">    &#125;</span><br><span class="line">    L-&gt;Next&#x3D;p ? p : q;</span><br><span class="line">    L1-&gt;Next&#x3D;NULL;</span><br><span class="line">    L2-&gt;Next&#x3D;NULL;</span><br><span class="line">    return L3;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h1 id="类似题目：链表重排（25-分）"><a href="#类似题目：链表重排（25-分）" class="headerlink" title="类似题目：链表重排（25 分）"></a>类似题目：链表重排（25 分）</h1><h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2>给定一条单链表，将链表结点进行头尾交错重新排序，即如果一条单链表为 L1 -&gt; L2 -&gt; … -&gt; L(n-1) -&gt; Ln ，那么重新排序完的结果是 L1 -&gt; Ln -&gt; L2 -&gt; L(n-1) -&gt; L3 -&gt; L(n-2) -&gt; …</li>
+</ol>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>每个输入文件中一组数据。</p>
+<p>第一行给出结点的总个数N（0&lt;N&lt;10^5）和单链表的第一个结点的地址。所有结点的地址要么是一个五位正整数，要么是用-1表示的空地址NULL。然后是N行，表示N个结点，每行的格式为</p>
+<h2 id="Address-Data-Next"><a href="#Address-Data-Next" class="headerlink" title="Address Data Next"></a>Address Data Next</h2><p>其中Address为结点地址（不足5位的高位用零填充至5位），Data为结点的数据域（绝对值不超过10^5的整数），Next为结点的指针域（即下一个结点的地址）。数据保证Address不等于-1。</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出按题目要求重新排序后的单链表。第一行为重新排序后单链表上结点的个数、第一个结点的地址。</p>
+<p>之后每行一个结点，输出格式与输入相同，结点输出顺序为单链表连接顺序。</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>5 11111<br>33333 0 44444<br>22222 2 33333<br>11111 5 22222<br>05689 8 -1<br>44444 6 05689<br>Sample Output<br>5 11111<br>11111 5 05689<br>05689 8 22222<br>22222 2 44444<br>44444 6 33333<br>33333 0 -1</p>
+<h2 id="Address：-https-logn-me-problem-1042"><a href="#Address：-https-logn-me-problem-1042" class="headerlink" title="Address： https://logn.me/problem/1042"></a>Address： <a target="_blank" rel="noopener" href="https://logn.me/problem/1042">https://logn.me/problem/1042</a></h2><h2 id="Note1"><a href="#Note1" class="headerlink" title="Note1"></a>Note1</h2><ol>
+<li>思路有些清奇，以为int型装不下，用的字符串 。正排一边 ， 正序逆序记录两次，交替输出前一半。  ——超时</li>
+</ol>
+<h2 id="Code1"><a href="#Code1" class="headerlink" title="Code1"></a>Code1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAX 100100</span><br><span class="line">struct Node&#123;</span><br><span class="line">    char address[7];</span><br><span class="line">    int data;</span><br><span class="line">    char next[7];</span><br><span class="line">&#125;a[MAX], sort1[MAX], sort2[MAX];</span><br><span class="line">int main()&#123;</span><br><span class="line">    int num;</span><br><span class="line">    char temp[7], start[7];</span><br><span class="line">    scanf(&quot;%d %s&quot;, &amp;num, start);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; num; i++)&#123;</span><br><span class="line">        scanf(&quot;%s %d %s&quot;, a[i].address, &amp;a[i].data, a[i].next);</span><br><span class="line">    &#125;</span><br><span class="line">    int cnt &#x3D; 0;</span><br><span class="line">    strcpy(temp, start);</span><br><span class="line">    int i;</span><br><span class="line">    while(cnt &lt; num)&#123;</span><br><span class="line">        for(i &#x3D; 0; strcmp(a[i].address, temp) !&#x3D; 0; i++);</span><br><span class="line">        sort1[cnt++] &#x3D; a[i];</span><br><span class="line">        sort2[num - cnt] &#x3D; a[i];</span><br><span class="line">        strcpy(temp , a[i].next);</span><br><span class="line">    &#125;</span><br><span class="line">    if(num % 2 &#x3D;&#x3D; 0) strcpy(sort1[num&#x2F;2 + 1].address, &quot;-1&quot;);</span><br><span class="line">    else strcpy(sort2[num&#x2F;2].address, &quot;-1&quot;);</span><br><span class="line">    printf(&quot;%d %s\n&quot;, num, start);</span><br><span class="line">    for(i &#x3D; 0; i &lt;&#x3D; num&#x2F;2; i++)&#123;</span><br><span class="line">        printf(&quot;%s %d %s\n&quot;, sort1[i].address, sort1[i].data, sort2[i].address);</span><br><span class="line">        if(!(num % 2 &#x3D;&#x3D; 1 &amp;&amp; i &#x3D;&#x3D; num &#x2F; 2))</span><br><span class="line">            printf(&quot;%s %d %s\n&quot;, sort2[i].address, sort2[i].data, sort1[i + 1].address );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Note2"><a href="#Note2" class="headerlink" title="Note2"></a>Note2</h2><ol>
+<li>用int型存储，利用地址直接哈希， 排序完后记录会去</li>
+<li>const int maxn = 1e5 + 10 值得借鉴的用法<h2 id="Code2"><a href="#Code2" class="headerlink" title="Code2"></a>Code2</h2></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn&#x3D;1e5+10;</span><br><span class="line"></span><br><span class="line">struct Node&#123;</span><br><span class="line">	int ad,next,data;</span><br><span class="line">&#125;a[maxn],ans[maxn];</span><br><span class="line"> </span><br><span class="line">int main()&#123;</span><br><span class="line">	int ptr,num,address;</span><br><span class="line">	scanf(&quot;%d %d&quot;,&amp;num, &amp;ptr );</span><br><span class="line">	for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;, &amp;address);</span><br><span class="line">		scanf(&quot;%d %d&quot;, &amp;a[address].data, &amp;a[address].next);</span><br><span class="line">	&#125;</span><br><span class="line">	int cnt&#x3D;1;</span><br><span class="line">	printf(&quot;%d %05d\n&quot;, num, ptr);</span><br><span class="line">	while(ptr !&#x3D; -1)&#123;</span><br><span class="line">		ans[cnt].ad &#x3D; ptr;</span><br><span class="line">		ans[cnt++].data &#x3D; a[ptr].data;</span><br><span class="line">		ptr &#x3D; a[ptr].next;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i &#x3D; 1; i &lt; cnt ; i++)&#123;</span><br><span class="line">		if(i%2 &#x3D;&#x3D; 0)</span><br><span class="line">			a[i] &#x3D; ans[cnt - i&#x2F;2];</span><br><span class="line">		else </span><br><span class="line">			a[i] &#x3D; ans[i&#x2F;2 + 1];</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i &#x3D; 1; i &lt; cnt-1; i++)&#123;</span><br><span class="line">		printf(&quot;%05d %d %05d\n&quot;,a[i].ad, a[i].data, a[i+1].ad);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%05d %d -1\n&quot;, a[cnt-1].ad, a[cnt-1].data);</span><br><span class="line">		return 0;</span><br><span class="line">&#125;</span><br><span class="line"># 02-线性结构2 一元多项式的乘法与加法运算 （20 分)</span><br><span class="line">设计函数分别求两个一元多项式的乘积与和。</span><br><span class="line"></span><br><span class="line">## 输入格式:</span><br><span class="line">输入分2行，每行分别先给出多项式非零项的个数，再以指数递降方式输入一个多项式非零项系数和指数（绝对值均为不超过1000的整数）。数字间以空格分隔。</span><br><span class="line"></span><br><span class="line">## 输出格式:</span><br><span class="line">输出分2行，分别以指数递降方式输出乘积多项式以及和多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。零多项式应输出0 0。</span><br><span class="line"></span><br><span class="line">## 输入样例:</span><br><span class="line">4 3 4 -5 2  6 1  -2 0</span><br><span class="line">3 5 20  -7 4  3 1</span><br><span class="line">## 输出样例:</span><br><span class="line">15 24 -25 22 30 21 -10 20 -21 8 35 6 -33 5 14 4 -15 3 18 2 -6 1</span><br><span class="line">5 20 -4 4 -5 2 9 1 -2 0</span><br><span class="line">## 分析</span><br><span class="line">1.是不是pat改版改的哇， 两到题都有些问题过不了，测试点3输入有零多项式和常数多项式不管是输出还是不输出系数为零的多项式，都有错误。</span><br><span class="line">## 代码</span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"> </span><br><span class="line">typedef struct PolyNode *Polynomial;</span><br><span class="line">int length &#x3D; 0;</span><br><span class="line">struct PolyNode &#123;</span><br><span class="line">  int coef;</span><br><span class="line">  int expon;</span><br><span class="line">  Polynomial link;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void Attach(int c, int e, Polynomial* pRear)</span><br><span class="line">&#123;</span><br><span class="line">  Polynomial P;</span><br><span class="line">  P &#x3D; (Polynomial)malloc(sizeof(struct PolyNode));</span><br><span class="line">  P-&gt;coef &#x3D; c;</span><br><span class="line">  P-&gt;expon &#x3D; e;</span><br><span class="line">  P-&gt;link &#x3D; NULL;</span><br><span class="line">  (*pRear)-&gt;link &#x3D; P;</span><br><span class="line">  *pRear &#x3D; P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Polynomial ReadPoly (void)</span><br><span class="line">&#123;</span><br><span class="line">  Polynomial P,Rear,t;</span><br><span class="line">  int n;</span><br><span class="line">  int c;</span><br><span class="line">  int e;</span><br><span class="line">  scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">  P &#x3D; (Polynomial)malloc(sizeof(struct PolyNode));</span><br><span class="line">  P-&gt;link &#x3D; NULL;</span><br><span class="line">  Rear &#x3D; P;</span><br><span class="line">  while(n--)</span><br><span class="line">  &#123;</span><br><span class="line">    scanf(&quot;%d %d&quot;, &amp;c, &amp;e);</span><br><span class="line">    Attach(c, e, &amp;Rear);</span><br><span class="line">  &#125;</span><br><span class="line">  t &#x3D; P;</span><br><span class="line">  P &#x3D; P-&gt;link;</span><br><span class="line">  free(t);</span><br><span class="line">  return P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Polynomial Mult(Polynomial P1, Polynomial P2)</span><br><span class="line">&#123;</span><br><span class="line">  Polynomial t1,t2,P,Rear,t;</span><br><span class="line">  int e;</span><br><span class="line">  int c;</span><br><span class="line">  if(!P1||!P2) return NULL;</span><br><span class="line">  t1 &#x3D; P1;</span><br><span class="line">  t2 &#x3D; P2;</span><br><span class="line">  P &#x3D; (Polynomial)malloc(sizeof(struct PolyNode));</span><br><span class="line">  P-&gt;link &#x3D; NULL;</span><br><span class="line">	Rear&#x3D;P;</span><br><span class="line">  while(t2)</span><br><span class="line">  &#123;</span><br><span class="line">    Attach(t1-&gt;coef*t2-&gt;coef,t1-&gt;expon+t2-&gt;expon,&amp;Rear);</span><br><span class="line">    t2 &#x3D; t2-&gt;link;</span><br><span class="line">    length++;</span><br><span class="line">  &#125;</span><br><span class="line">  t1 &#x3D; t1-&gt;link;</span><br><span class="line">  while(t1)</span><br><span class="line">  &#123;</span><br><span class="line">    Rear &#x3D; P;</span><br><span class="line">    t2 &#x3D; P2;</span><br><span class="line">    while(t2)</span><br><span class="line">    &#123;</span><br><span class="line">      c &#x3D; t1-&gt;coef*t2-&gt;coef;</span><br><span class="line">      e &#x3D; t1-&gt;expon+t2-&gt;expon;</span><br><span class="line">      while(Rear-&gt;link&amp;&amp;Rear-&gt;link-&gt;expon&gt;e) Rear&#x3D;Rear-&gt;link;</span><br><span class="line">      if(Rear-&gt;link &amp;&amp;Rear-&gt;link-&gt;expon&#x3D;&#x3D;e)&#x2F;&#x2F;Rear-&gt;link╢Макр╩мМио</span><br><span class="line">      &#123;</span><br><span class="line">        if(Rear-&gt;link-&gt;coef+c) Rear-&gt;link-&gt;coef+&#x3D;c;</span><br><span class="line">        else&#123;</span><br><span class="line">          t &#x3D; Rear-&gt;link;</span><br><span class="line">          Rear-&gt;link &#x3D; t-&gt;link;</span><br><span class="line">          free(t);</span><br><span class="line">          length--;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      else&#123;</span><br><span class="line">        t &#x3D; (Polynomial)malloc(sizeof(struct PolyNode));</span><br><span class="line">        t-&gt;coef &#x3D; c;</span><br><span class="line">        t-&gt;expon&#x3D;e;</span><br><span class="line">        t-&gt;link &#x3D; Rear-&gt;link;</span><br><span class="line">        Rear-&gt;link &#x3D;t;</span><br><span class="line">        Rear &#x3D; Rear-&gt;link;&#x2F;&#x2F;?</span><br><span class="line">        length++;</span><br><span class="line">      &#125;</span><br><span class="line">      t2 &#x3D; t2-&gt;link;</span><br><span class="line">    &#125;</span><br><span class="line">    t1 &#x3D; t1-&gt;link;</span><br><span class="line">  &#125;</span><br><span class="line">  t &#x3D; P;</span><br><span class="line">  P &#x3D; P-&gt;link;</span><br><span class="line">  free(t);</span><br><span class="line">  return P;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Print(Polynomial P)</span><br><span class="line">&#123;</span><br><span class="line">  int flag &#x3D; 0;</span><br><span class="line">  int cnt &#x3D; 0;</span><br><span class="line">  if (!P) &#123;printf(&quot;0 0\n&quot;); return;&#125;</span><br><span class="line">  while(P)</span><br><span class="line">  &#123;</span><br><span class="line">	if(!flag) flag &#x3D; 1;</span><br><span class="line">	else&#123;</span><br><span class="line">		printf(&quot; &quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d %d&quot;, P-&gt;coef ,P-&gt;expon );</span><br><span class="line">	cnt ++;</span><br><span class="line">	P &#x3D; P-&gt;link;</span><br><span class="line">  &#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">Polynomial Add(Polynomial P1, Polynomial P2) &#123;</span><br><span class="line">  Polynomial t1,t2,P,Rear,t;</span><br><span class="line">  int e;</span><br><span class="line">  int c;</span><br><span class="line">  if(!P1||!P2) return NULL;</span><br><span class="line">  t1 &#x3D; P1;</span><br><span class="line">  t2 &#x3D; P2;</span><br><span class="line">  </span><br><span class="line">  P&#x3D;(Polynomial)malloc(sizeof(struct PolyNode));</span><br><span class="line">  Rear &#x3D; P;</span><br><span class="line">  while(t1 &amp;&amp; t2) &#123;</span><br><span class="line">    if(t1 -&gt; expon &#x3D;&#x3D; t2 -&gt; expon)&#123;</span><br><span class="line">      if(t1 -&gt; coef !&#x3D; -(t2 -&gt; coef)) Attach(t1 -&gt; coef + t2 -&gt; coef, t1 -&gt; expon, &amp;Rear);</span><br><span class="line">      t1 &#x3D; t1 -&gt; link;</span><br><span class="line">      t2 &#x3D; t2 -&gt; link;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(t1 -&gt; expon &gt; t2 -&gt; expon)&#123;</span><br><span class="line">      Attach(t1 -&gt; coef, t1 -&gt; expon, &amp;Rear);</span><br><span class="line">      t1 &#x3D; t1 -&gt; link;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">      Attach(t2 -&gt; coef, t2 -&gt; expon, &amp;Rear);</span><br><span class="line">      t2 &#x3D; t2 -&gt; link;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  Rear -&gt; link &#x3D; t1 ? t1 : t2;</span><br><span class="line">  t &#x3D; P;</span><br><span class="line">  P &#x3D; P-&gt;link;</span><br><span class="line">  free(t);</span><br><span class="line">  return P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  Polynomial P1,P2,Pmulti, Pplus;</span><br><span class="line">  P1&#x3D;ReadPoly();</span><br><span class="line">  P2&#x3D;ReadPoly();</span><br><span class="line"></span><br><span class="line">  Pmulti&#x3D;Mult(P1,P2);</span><br><span class="line">  Pplus &#x3D; Add(P1,P2);</span><br><span class="line"></span><br><span class="line">  Print(Pmulti);</span><br><span class="line">  Print(Pplus);</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line"># 02-线性结构4 Pop Sequence （25 分)</span><br><span class="line">Given a stack which can keep M numbers at most. Push N numbers in the order of 1, 2, 3, ..., N and pop randomly. You are supposed to tell if a given sequence of numbers is a possible pop sequence of the stack. For example, if M is 5 and N is 7, we can obtain 1, 2, 3, 4, 5, 6, 7 from the stack, but not 3, 2, 1, 7, 5, 6, 4.</span><br><span class="line"></span><br><span class="line">## Input Specification:</span><br><span class="line">Each input file contains one test case. For each case, the first line contains 3 numbers (all no more than 1000): M (the maximum capacity of the stack), N (the length of push sequence), and K (the number of pop sequences to be checked). Then K lines follow, each contains a pop sequence of N numbers. All the numbers in a line are separated by a space.</span><br><span class="line"></span><br><span class="line">## Output Specification:</span><br><span class="line">For each pop sequence, print in one line &quot;YES&quot; if it is indeed a possible pop sequence of the stack, or &quot;NO&quot; if not.</span><br><span class="line"></span><br><span class="line">## Sample Input:</span><br><span class="line">5 7 5</span><br><span class="line">1 2 3 4 5 6 7</span><br><span class="line">3 2 1 7 5 6 4</span><br><span class="line">7 6 5 4 3 2 1</span><br><span class="line">5 6 4 3 7 2 1</span><br><span class="line">1 7 6 5 4 3 2</span><br><span class="line">## Sample Output:</span><br><span class="line">YES</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">YES</span><br><span class="line">NO</span><br><span class="line">## Note</span><br><span class="line">1. 栈空的时候不能读里面的数据</span><br><span class="line">2.  一行数的输入注意完整性，判断错误后剩余垃圾数据记得处理掉</span><br><span class="line">## Code</span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int max, num, n;</span><br><span class="line">	stack &lt;int&gt; s;</span><br><span class="line">    cin &gt;&gt; max &gt;&gt; num &gt;&gt;n;</span><br><span class="line">    while(n--) &#123;</span><br><span class="line">        int j &#x3D; 0;</span><br><span class="line">        int temp;</span><br><span class="line">        for(int i &#x3D; 0; i&lt; num; i++) &#123;</span><br><span class="line">            cin &gt;&gt; temp;</span><br><span class="line">			if(s.empty()) s.push(++j);</span><br><span class="line">            while(temp !&#x3D;  s.top()) &#123;</span><br><span class="line">                s.push(++j);</span><br><span class="line">				if(s.size() &gt; max) &#123;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(s.size() &lt; 0 || s.size() &gt; max) &#123;   &#x2F;&#x2F;保证不影响下一次的检查</span><br><span class="line">			    for(i++; i &lt; num; i++) cin &gt;&gt; temp;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        if(s.size() &#x3D;&#x3D; 0) </span><br><span class="line">            printf(&quot;YES\n&quot;);</span><br><span class="line">		else &#123;</span><br><span class="line">			printf(&quot;NO\n&quot;);</span><br><span class="line">			while(!s.empty()) s.pop();</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line">## Code2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>#include<iostream><br>#include<stack><br>using namespace std;<br>int main() {<br>    stack <int> s;<br>    int num, capcity, testnum;<br>    cin &gt;&gt; capcity &gt;&gt; num &gt;&gt; testnum;<br>    for(int i = 0; i &lt; testnum; i++){<br>        int n = 1;<br>        int cnt = 0;<br>        for(int k = 0; k &lt; num; k++)<br>        {<br>            int temp;<br>            cin &gt;&gt; temp; cnt ++;<br>            if(s.size() == 0)  s.push(n++);<br>            while(temp != s.top()){<br>                s.push(n++);<br>                if(s.size() &gt; capcity)<br>                     break;<br>            }<br>            if(s.size() &gt; capcity){<br>                for(int j = cnt; j &lt; num; j++){<br>                    int temp;<br>                    cin &gt;&gt; temp;<br>                }<br>                break;<br>            }<br>            s.pop();<br>        }<br>        if(s.size() &gt; capcity) cout &lt;&lt; “NO” &lt;&lt; endl;<br>        else cout &lt;&lt; “YES” &lt;&lt; endl;<br>        while(s.size() &gt; 0) s.pop();<br>    }<br>    return 0;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br></pre></td><td class="code"><pre><span class="line"># 03-树1 树的同构 （25 分)</span><br><span class="line">给定两棵树T1和T2。如果T1可以通过若干次左右孩子互换就变成T2，则我们称两棵树是“同构”的。例如图1给出的两棵树就是同构的，因为我们把其中一棵树的结点A、B、G的左右孩子互换后，就得到另外一棵树。而图2就不是同构的。</span><br><span class="line"></span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190423212923300.png)</span><br><span class="line">图1</span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190423212933531.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">图2</span><br><span class="line"></span><br><span class="line">现给定两棵树，请你判断它们是否是同构的。</span><br><span class="line">## 输入格式:</span><br><span class="line">输入给出2棵二叉树树的信息。对于每棵树，首先在一行中给出一个非负整数N (≤10)，即该树的结点数（此时假设结点从0到N−1编号）；随后N行，第i行对应编号第i个结点，给出该结点中存储的1个英文大写字母、其左孩子结点的编号、右孩子结点的编号。如果孩子结点为空，则在相应位置上给出“-”。给出的数据间用一个空格分隔。注意：题目保证每个结点中存储的字母是不同的。</span><br><span class="line"></span><br><span class="line">## 输出格式:</span><br><span class="line">如果两棵树是同构的，输出“Yes”，否则输出“No”。</span><br><span class="line"></span><br><span class="line">## 输入样例1（对应图1）：</span><br><span class="line">8</span><br><span class="line">A 1 2</span><br><span class="line">B 3 4</span><br><span class="line">C 5 -</span><br><span class="line">D - -</span><br><span class="line">E 6 -</span><br><span class="line">G 7 -</span><br><span class="line">F - -</span><br><span class="line">H - -</span><br><span class="line">8</span><br><span class="line">G - 4</span><br><span class="line">B 7 6</span><br><span class="line">F - -</span><br><span class="line">A 5 1</span><br><span class="line">H - -</span><br><span class="line">C 0 -</span><br><span class="line">D - -</span><br><span class="line">E 2 -</span><br><span class="line">## 输出样例1:</span><br><span class="line">Yes</span><br><span class="line">## 输入样例2（对应图2）：</span><br><span class="line">8</span><br><span class="line">B 5 7</span><br><span class="line">F - -</span><br><span class="line">A 0 3</span><br><span class="line">C 6 -</span><br><span class="line">H - -</span><br><span class="line">D - -</span><br><span class="line">G 4 -</span><br><span class="line">E 1 -</span><br><span class="line">8</span><br><span class="line">D 6 -</span><br><span class="line">B 5 -</span><br><span class="line">E - -</span><br><span class="line">H - -</span><br><span class="line">C 0 2</span><br><span class="line">G - 3</span><br><span class="line">F - -</span><br><span class="line">A 1 4</span><br><span class="line">## 输出样例2:</span><br><span class="line">No</span><br><span class="line">## 思路</span><br><span class="line">1. 注意到在函数里输入数据的话ifstream cin 不会用</span><br><span class="line">2. 判断同构的逻辑不明白其充分性</span><br><span class="line">3. 静态链表注意格式 用数组下表代替指针，用数组代替整个链式结构，数组中第i个元素代表其中的内容</span><br><span class="line">## Code</span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;fstream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define Null -1</span><br><span class="line">#define Max 10</span><br><span class="line"></span><br><span class="line">struct Node&#123;</span><br><span class="line">    char data;</span><br><span class="line">    int left,right;</span><br><span class="line">&#125;T1[Max], T2[Max];</span><br><span class="line"></span><br><span class="line">int BuildTree(Node T[]) &#123;</span><br><span class="line">  </span><br><span class="line">    int num;</span><br><span class="line">    char data,left,right;</span><br><span class="line">    cin &gt;&gt; num;</span><br><span class="line">    vector&lt;int&gt; check(num, 0);</span><br><span class="line">    if (num )&#123; </span><br><span class="line">        for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">            cin &gt;&gt; data &gt;&gt; left &gt;&gt; right;</span><br><span class="line">            T[i].data &#x3D; data;</span><br><span class="line">            if(left &#x3D;&#x3D; &#39;-&#39;) T[i].left &#x3D; Null;</span><br><span class="line">            else &#123; T[i].left &#x3D; left - &#39;0&#39;; check[T[i].left] &#x3D; 1; &#125;</span><br><span class="line">            if(right &#x3D;&#x3D; &#39;-&#39;) T[i].right &#x3D; Null;</span><br><span class="line"></span><br><span class="line">            else &#123; T[i].right &#x3D; right - &#39;0&#39;; check[T[i].right] &#x3D; 1; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">  </span><br><span class="line">        int i;</span><br><span class="line">        for( i &#x3D; 0; i &lt; num; i++)&#123;</span><br><span class="line">            </span><br><span class="line">            if(!check[i])    break;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">         return i;</span><br><span class="line">    &#125;</span><br><span class="line">    else return -1;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line">int Isomophic(int a, int b)&#123;</span><br><span class="line">    if(a &#x3D;&#x3D; Null &amp;&amp; b &#x3D;&#x3D; Null) return 1;</span><br><span class="line">    else if(a &#x3D;&#x3D; Null &amp;&amp; b !&#x3D; Null || a !&#x3D; Null &amp;&amp; b &#x3D;&#x3D; Null) return 0;</span><br><span class="line">    else if(T1[a].data !&#x3D; T2[b].data) return 0;</span><br><span class="line">    else if(T1[a].left &#x3D;&#x3D; Null &amp;&amp; T2[b].left &#x3D;&#x3D; Null) return Isomophic(T1[a].right, T2[b].right);</span><br><span class="line">    else if(T1[a].left !&#x3D; Null &amp;&amp; T2[b].left !&#x3D; Null &amp;&amp; T1[T1[a].left].data &#x3D;&#x3D; T2[T2[b].left].data)</span><br><span class="line">         return Isomophic(T1[a].left, T2[b].left) &amp;&amp; Isomophic(T1[a].right, T2[b].right);</span><br><span class="line">    else return Isomophic(T1[a].left, T2[b].right) &amp;&amp; Isomophic(T1[a].right, T2[b].left);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">#ifdef _DEBUG</span><br><span class="line">	ifstream cin(&quot;data.txt&quot;);</span><br><span class="line">#endif</span><br><span class="line">    int A,B;</span><br><span class="line">    A &#x3D; BuildTree(T1);</span><br><span class="line">    B &#x3D; BuildTree(T2);</span><br><span class="line">    Isomophic(A,B) ? cout &lt;&lt; &quot;Yes&quot; : cout &lt;&lt; &quot;No&quot;;</span><br><span class="line">#ifdef _DEBUG</span><br><span class="line">	cin.close(	);</span><br><span class="line">#endif</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line"># 03-树3 Tree Traversals Again (25 分)</span><br><span class="line">An inorder binary tree traversal can be implemented in a non-recursive way with a stack. For example, suppose that when a 6-node binary tree (with the keys numbered from 1 to 6) is traversed, the stack operations are: push(1); push(2); push(3); pop(); pop(); push(4); pop(); pop(); push(5); push(6); pop(); pop(). Then a unique binary tree (shown in Figure 1) can be generated from this sequence of operations. Your task is to give the postorder traversal sequence of this tree.</span><br><span class="line"></span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019042721410458.png)</span><br><span class="line">Figure 1</span><br><span class="line">## Input Specification:</span><br><span class="line">Each input file contains one test case. For each case, the first line contains a positive integer N (≤30) which is the total number of nodes in a tree (and hence the nodes are numbered from 1 to N). Then 2N lines follow, each describes a stack operation in the format: &quot;Push X&quot; where X is the index of the node being pushed onto the stack; or &quot;Pop&quot; meaning to pop one node from the stack.</span><br><span class="line"></span><br><span class="line">## Output Specification:</span><br><span class="line">For each test case, print the postorder traversal sequence of the corresponding tree in one line. A solution is guaranteed to exist. All the numbers must be separated by exactly one space, and there must be no extra space at the end of the line.</span><br><span class="line"></span><br><span class="line">## Sample Input:</span><br><span class="line">6</span><br><span class="line">Push 1</span><br><span class="line">Push 2</span><br><span class="line">Push 3</span><br><span class="line">Pop</span><br><span class="line">Pop</span><br><span class="line">Push 4</span><br><span class="line">Pop</span><br><span class="line">Pop</span><br><span class="line">Push 5</span><br><span class="line">Push 6</span><br><span class="line">Pop</span><br><span class="line">Pop</span><br><span class="line">## Sample Output:</span><br><span class="line">3 4 2 6 5 1</span><br><span class="line">## 思路</span><br><span class="line">1. 树的遍历中，除根节点以外其他节点每个结点被访问三次，push一次，pop一次，pop一次因而题目转换成了已知先序和中序求后序</span><br><span class="line">2. 具体思路为每次递归求出子树的根节点</span><br><span class="line">3. vector &lt;int&gt; 类型的数组 参数从 int a[] 变成 vector &lt; int &gt; a</span><br><span class="line">## 例子</span><br><span class="line"> pre : 1 2 3  4 5 6</span><br><span class="line"> mid : 3 2 4 1 6 5</span><br><span class="line"> post: 3 4 2 6 5 1     </span><br><span class="line"></span><br><span class="line">## Codes</span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void getPostOrder(vector&lt;int&gt; pre, int preL, vector&lt;int&gt; mid, int midL,vector&lt;int&gt; &amp;post, int postL, int n) &#x2F;&#x2F;preL midL postl is pointer</span><br><span class="line">&#123;</span><br><span class="line">    if (n &#x3D;&#x3D; 0) return ;</span><br><span class="line">    if (n &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        post[postL] &#x3D; pre[preL];</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    int root &#x3D; pre[preL];</span><br><span class="line">    post[postL + n - 1] &#x3D; root;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    while (i &lt; n) &#123;</span><br><span class="line">        if (mid[midL + i] &#x3D;&#x3D; root)  break;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    int L &#x3D; i, nodesnum &#x3D; n - i - 1;</span><br><span class="line">	getPostOrder(pre, preL + 1, mid, midL, post, postL, L);</span><br><span class="line">    getPostOrder(pre, preL + L + 1, mid, midL + L + 1, post, postL + L, nodesnum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int num;</span><br><span class="line">    cin &gt;&gt; num;</span><br><span class="line">    vector &lt;int&gt; pre(num, 0) , mid(num, 0), post(num, 0);</span><br><span class="line">    stack&lt;int&gt; s;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    for(int cnt &#x3D; 0; i &lt; num; )&#123;</span><br><span class="line">        string temp ;</span><br><span class="line">        int tempdata;</span><br><span class="line">        cin &gt;&gt; temp;</span><br><span class="line">        if(temp &#x3D;&#x3D; &quot;Push&quot;)&#123;</span><br><span class="line">			cin &gt;&gt; tempdata;</span><br><span class="line">            pre[cnt] &#x3D; tempdata;</span><br><span class="line">            s.push(tempdata);</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            mid[i++] &#x3D; s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    getPostOrder(pre, 0,   mid, 0 , post, 0 , num);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">        if(i &lt; num -1) cout &lt;&lt; post[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">        else cout &lt;&lt; post[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line">## Code2 dfs</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>vector<int> res;<br>int num;<br>int a[10010] , intern[10010];<br>int cnt = 0;<br>int ready = 0;<br>void Dfs(int n){<br>    if(ready == 2) return;<br>    int tempdata;<br>    string temp;<br>    cin &gt;&gt; temp;<br>    if(temp == “Push”){<br>        cin &gt;&gt; tempdata;<br>        a[cnt++] = tempdata;</p>
+<pre><code>&#125;else &#123;
+    if(cnt == num)&#123;
+        ready ++;
+    &#125;
+    return;
+&#125;
+Dfs(n * 2 + 1);
+Dfs(n * 2 + 2);
+res.push_back(tempdata);</code></pre>
+<p>}<br>int main(){<br>    cin &gt;&gt; num;<br>    Dfs(0);<br>    for(int i = 0; i &lt; num; i++){<br>        if( i== 0) cout &lt;&lt; res[i];<br>        else cout &lt;&lt; “ “ &lt;&lt; res[i];<br>    }<br>    return 0;<br>}</p>
+<p>```</p>
+<h1 id="04-树4-是否同一棵二叉搜索树-25-分"><a href="#04-树4-是否同一棵二叉搜索树-25-分" class="headerlink" title="04-树4 是否同一棵二叉搜索树 (25 分)"></a>04-树4 是否同一棵二叉搜索树 (25 分)</h1><p>给定一个插入序列就可以唯一确定一棵二叉搜索树。然而，一棵给定的二叉搜索树却可以由多种不同的插入序列得到。例如分别按照序列{2, 1, 3}和{2, 3, 1}插入初始为空的二叉搜索树，都得到一样的结果。于是对于输入的各种插入序列，你需要判断它们是否能生成一样的二叉搜索树。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h2><p>输入包含若干组测试数据。每组数据的第1行给出两个正整数N (≤10)和L，分别是每个序列插入元素的个数和需要检查的序列个数。第2行给出N个以空格分隔的正整数，作为初始插入序列。最后L行，每行给出N个插入的元素，属于L个需要检查的序列。</p>
+<p>简单起见，我们保证每个插入序列都是1到N的一个排列。当读到N为0时，标志输入结束，这组数据不要处理。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h2><p>对每一组需要检查的序列，如果其生成的二叉搜索树跟对应的初始序列生成的一样，输出“Yes”，否则输出“No”。</p>
+<h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h2><p>4 2<br>3 1 4 2<br>3 4 1 2<br>3 2 4 1<br>2 1<br>2 1<br>1 2<br>0</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h2><p>Yes<br>No<br>No</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>采用链式结构，设左右孩子、值、flag（用于比较）域。</li>
+<li>建搜索树利用递归形式，值大于建在其右子树，小于建在其左子树，若空生成节点并返回</li>
+<li>判断方法： 每次搜索经过的节点是否在前面出现过，flag域</li>
+<li>为防止判断错误便return， 加设flag标志</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;malloc.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">typedef struct TreeNode *Tree;</span><br><span class="line">struct TreeNode&#123;</span><br><span class="line">    int v;</span><br><span class="line">    Tree Left, Right;</span><br><span class="line">    int flag;</span><br><span class="line">&#125;;</span><br><span class="line">Tree NewNode(int V)&#123;</span><br><span class="line">    Tree T &#x3D; (Tree)malloc(sizeof(struct TreeNode));</span><br><span class="line">    T-&gt;v &#x3D; V;</span><br><span class="line">    T-&gt;Left &#x3D; T-&gt;Right &#x3D; NULL;</span><br><span class="line">    T-&gt;flag &#x3D; 0;</span><br><span class="line">    return T;</span><br><span class="line">&#125;</span><br><span class="line">Tree Insert(Tree T, int V) &#123;</span><br><span class="line">    if(!T) T &#x3D; NewNode(V);</span><br><span class="line">    else&#123;</span><br><span class="line">        if(V &gt; T-&gt;v) T-&gt;Right &#x3D; Insert(T-&gt;Right, V);</span><br><span class="line">        else T-&gt;Left &#x3D; Insert(T-&gt;Left, V);</span><br><span class="line">    &#125;</span><br><span class="line">    return T;</span><br><span class="line">&#125;</span><br><span class="line">Tree MakeTree(int N) &#123;</span><br><span class="line">    Tree T;</span><br><span class="line">    int i, V;</span><br><span class="line">    cin &gt;&gt; V;</span><br><span class="line">    T &#x3D; NewNode(V);</span><br><span class="line">    for(i &#x3D; 1; i &lt; N; i++) &#123;</span><br><span class="line">        cin &gt;&gt; V;</span><br><span class="line">        T &#x3D; Insert(T, V);</span><br><span class="line">    &#125;</span><br><span class="line">    return T;</span><br><span class="line">&#125;</span><br><span class="line">int check(Tree T, int V)&#123;</span><br><span class="line">    if(T-&gt;flag) &#123;</span><br><span class="line">        if(V &lt; T-&gt;v) return check(T-&gt;Left, V);</span><br><span class="line">        else if(V &gt; T-&gt;v) return check(T-&gt;Right, V);</span><br><span class="line">        else return 0;</span><br><span class="line">    &#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		if(V &#x3D;&#x3D; T-&gt;v)&#123;</span><br><span class="line">			T-&gt;flag &#x3D; 1;</span><br><span class="line">			return 1;</span><br><span class="line">		&#125;</span><br><span class="line">		else return 0;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int Judge(Tree T, int N) &#123;</span><br><span class="line">    int i, V;</span><br><span class="line">    int flag &#x3D; 0;</span><br><span class="line">    cin &gt;&gt; V;</span><br><span class="line">    if(V !&#x3D; T-&gt;v) flag &#x3D; 1;</span><br><span class="line">    else T-&gt;flag &#x3D; 1;</span><br><span class="line">    for(i &#x3D; 1; i &lt; N; i++) &#123;</span><br><span class="line">        cin &gt;&gt; V;</span><br><span class="line">        if((!flag)&amp;&amp;(!check(T, V)))    flag &#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">    if(flag) return 0;</span><br><span class="line">    else</span><br><span class="line">        return 1;</span><br><span class="line">&#125;</span><br><span class="line">void ResetT(Tree T) &#123;</span><br><span class="line">    if(T-&gt;Left) ResetT(T-&gt;Left);</span><br><span class="line">    if(T-&gt;Right) ResetT(T-&gt;Right);</span><br><span class="line">    T-&gt;flag &#x3D; 0;</span><br><span class="line">&#125;</span><br><span class="line">void FreeTree(Tree T) &#123;</span><br><span class="line">    if(T-&gt;Left) FreeTree(T-&gt;Left);</span><br><span class="line">    if(T-&gt;Right) FreeTree(T-&gt;Right);</span><br><span class="line">    free(T);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int N, L, i;</span><br><span class="line">    Tree T;</span><br><span class="line">    std::ios::sync_with_stdio(false);</span><br><span class="line">    cin &gt;&gt; N;</span><br><span class="line">    while(N) &#123;</span><br><span class="line">        cin &gt;&gt; L;</span><br><span class="line">        T &#x3D; MakeTree(N);</span><br><span class="line">        for(i &#x3D; 0; i &lt; L; i++) &#123;</span><br><span class="line">            if(Judge(T,N))  cout &lt;&lt; &quot;Yes&quot; &lt;&lt;endl;</span><br><span class="line">            else cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;</span><br><span class="line">            ResetT(T);</span><br><span class="line">        &#125;</span><br><span class="line">        FreeTree(T);</span><br><span class="line">        cin &gt;&gt; N;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://s1.ax1x.com/2020/10/06/0UUsFU.md.png',
+  alipayImage: 'https://s1.ax1x.com/2020/10/06/0UUyYF.md.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Neoth</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/10/08/DS-A/" target="_blank" title="DS-A">http://example.com/2019/10/08/DS-A/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/20/DS-B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DS-B
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/03/PAT2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PAT2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#02-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%841-%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%BA%8F%E5%88%97%E7%9A%84%E5%90%88%E5%B9%B6-%EF%BC%8815-%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">02-线性结构1 两个有序链表序列的合并 （15 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">函数接口定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%81%E5%88%A4%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">裁判测试程序样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">输入样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">输出样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.5.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.6.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E4%BC%BC%E9%A2%98%E7%9B%AE%EF%BC%9A%E9%93%BE%E8%A1%A8%E9%87%8D%E6%8E%92%EF%BC%8825-%E5%88%86%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">类似题目：链表重排（25 分）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Description"><span class="nav-number">2.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">2.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Address-Data-Next"><span class="nav-number">2.3.</span> <span class="nav-text">Address Data Next</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">2.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">2.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Address%EF%BC%9A-https-logn-me-problem-1042"><span class="nav-number">2.6.</span> <span class="nav-text">Address： https:&#x2F;&#x2F;logn.me&#x2F;problem&#x2F;1042</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note1"><span class="nav-number">2.7.</span> <span class="nav-text">Note1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code1"><span class="nav-number">2.8.</span> <span class="nav-text">Code1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note2"><span class="nav-number">2.9.</span> <span class="nav-text">Note2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code2"><span class="nav-number">2.10.</span> <span class="nav-text">Code2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-25-%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">04-树4 是否同一棵二叉搜索树 (25 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">输入格式:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">输出格式:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B"><span class="nav-number">3.3.</span> <span class="nav-text">输入样例:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-number">3.4.</span> <span class="nav-text">输出样例:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">3.5.</span> <span class="nav-text">思路</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 Hexo All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Hexo
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Neoth All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

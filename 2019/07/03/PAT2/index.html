@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pat2 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Study" />
+  
+  
+  
+  
+  <meta name="description" content="1055 The World’s Richest （25 分)Forbes magazine publishes every year its list of billionaires based on the annual ranking of the world’s wealthiest people. Now you are supposed to simulate this job, bu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PAT2">
+<meta property="og:url" content="http://example.com/2019/07/03/PAT2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1055 The World’s Richest （25 分)Forbes magazine publishes every year its list of billionaires based on the annual ranking of the world’s wealthiest people. Now you are supposed to simulate this job, bu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-03T15:30:43.000Z">
+<meta property="article:modified_time" content="2020-10-06T15:35:27.760Z">
+<meta property="article:author" content="Neoth">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/resizeApi.png">
+  <link rel="apple-touch-icon" href="/css/images/resizeApi.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("/css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("/css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("/css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/resizeApi.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-PAT2" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      PAT2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/03/PAT2/" class="article-date">
+	  <time datetime="2019-07-03T15:30:43.000Z" itemprop="datePublished">2019-07-03</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1055-The-World’s-Richest-（25-分"><a href="#1055-The-World’s-Richest-（25-分" class="headerlink" title="1055 The World’s Richest （25 分)"></a>1055 The World’s Richest （25 分)</h1><p>Forbes magazine publishes every year its list of billionaires based on the annual ranking of the world’s wealthiest people. Now you are supposed to simulate this job, but concentrate only on the people in a certain range of ages. That is, given the net worths of N people, you must find the M richest people in a given range of their ages.</p>
+<p>Input Specification:<br>Each input file contains one test case. For each case, the first line contains 2 positive integers: N (≤10<br>​5<br>​​ ) - the total number of people, and K (≤10<br>​3<br>​​ ) - the number of queries. Then N lines follow, each contains the name (string of no more than 8 characters without space), age (integer in (0, 200]), and the net worth (integer in [−10<br>​6<br>​​ ,10<br>​6<br>​​ ]) of a person. Finally there are K lines of queries, each contains three positive integers: M (≤100) - the maximum number of outputs, and [Amin, Amax] which are the range of ages. All the numbers in a line are separated by a space.</p>
+<p>Output Specification:<br>For each query, first print in a line Case #X: where X is the query number starting from 1. Then output the M richest people with their ages in the range [Amin, Amax]. Each person’s information occupies a line, in the format</p>
+<p>Name Age Net_Worth<br>The outputs must be in non-increasing order of the net worths. In case there are equal worths, it must be in non-decreasing order of the ages. If both worths and ages are the same, then the output must be in non-decreasing alphabetical order of the names. It is guaranteed that there is no two persons share all the same of the three pieces of information. In case no one is found, output None.</p>
+<p>Sample Input:<br>12 4<br>Zoe_Bill 35 2333<br>Bob_Volk 24 5888<br>Anny_Cin 95 999999<br>Williams 30 -22<br>Cindy 76 76000<br>Alice 18 88888<br>Joe_Mike 32 3222<br>Michael 5 300000<br>Rosemary 40 5888<br>Dobby 24 5888<br>Billy 24 5888<br>Nobody 5 0<br>4 15 45<br>4 30 35<br>4 5 95<br>1 45 50<br>Sample Output:<br>Case #1:<br>Alice 18 88888<br>Billy 24 5888<br>Bob_Volk 24 5888<br>Dobby 24 5888<br>Case #2:<br>Joe_Mike 32 3222<br>Zoe_Bill 35 2333<br>Williams 30 -22<br>Case #3:<br>Anny_Cin 95 999999<br>Michael 5 300000<br>Alice 18 88888<br>Cindy 76 76000<br>Case #4:<br>None</p>
+<h2 id="超时代码"><a href="#超时代码" class="headerlink" title="超时代码"></a>超时代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int young, old;</span><br><span class="line">struct stu &#123;</span><br><span class="line">  string name;</span><br><span class="line">  int age, money;</span><br><span class="line">&#125;persons[100010];</span><br><span class="line">int cmpbyage (stu a, stu b) &#123;</span><br><span class="line">  return a.age &lt; b.age;</span><br><span class="line">&#125;</span><br><span class="line">int cmp (stu a, stu b) &#123;</span><br><span class="line">  if(a.age &lt;&#x3D; old &amp;&amp; a.age &gt;&#x3D; young &amp;&amp; b.age &lt;&#x3D; old &amp;&amp; b.age &gt;&#x3D; young)</span><br><span class="line">    return a.money &#x3D;&#x3D; b.money ? a.age &#x3D;&#x3D; b.age ? a.name &lt; b.name : a.age &lt; b.age : a.money &gt; b.money;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">  int cnt &#x3D; 0, num, queries;</span><br><span class="line">  ios_base::sync_with_stdio(false);</span><br><span class="line">  cin.tie(0);</span><br><span class="line">  cout.tie(0);</span><br><span class="line">  cin &gt;&gt; num &gt;&gt; queries;</span><br><span class="line">  for(int i &#x3D; 0; i &lt; num; i++)&#123;</span><br><span class="line">    cin &gt;&gt; persons[i].name &gt;&gt; persons[i].age &gt;&gt; persons[i].money;</span><br><span class="line">  &#125;</span><br><span class="line">  sort(persons, persons + num, cmpbyage);</span><br><span class="line">  int rank;</span><br><span class="line">  for(int i &#x3D; 0; i &lt; queries; i++) &#123;</span><br><span class="line">    cin &gt;&gt; rank &gt;&gt; young &gt;&gt; old;</span><br><span class="line">    int startpoint &#x3D; 0, endpoint &#x3D; 0;</span><br><span class="line">    while(persons[startpoint].age &lt; young &amp;&amp; startpoint &lt; num) startpoint++;</span><br><span class="line">	while(persons[endpoint].age &lt;&#x3D; old &amp;&amp; endpoint &lt; num) endpoint++;</span><br><span class="line">  sort(persons+startpoint, persons + endpoint, cmp);</span><br><span class="line"> </span><br><span class="line">  cout &lt;&lt; &quot;Case #&quot; &lt;&lt; i+1 &lt;&lt; &#39;:&#39; &lt;&lt; endl;</span><br><span class="line">	if(startpoint &#x3D;&#x3D; endpoint) &#123; printf(&quot;None\n&quot;); return  0;&#125;;</span><br><span class="line">	for(int j &#x3D; 0; j &lt; rank &amp;&amp; startpoint &lt; endpoint ; j++) &#123;</span><br><span class="line">      cout &lt;&lt; persons[startpoint].name &lt;&lt; &#39; &#39;&lt;&lt; persons[startpoint].age &lt;&lt; &quot; &quot; &lt;&lt; persons[startpoint].money &lt;&lt; endl;</span><br><span class="line">	  startpoint++;</span><br><span class="line">    &#125;</span><br><span class="line">	 sort(persons, persons + num, cmpbyage);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1075-PAT-Judge-（25-分"><a href="#1075-PAT-Judge-（25-分" class="headerlink" title="1075 PAT Judge （25 分)"></a>1075 PAT Judge （25 分)</h1><p>The ranklist of PAT is generated from the status list, which shows the scores of the submissions. This time you are supposed to generate the ranklist for PAT.</p>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. For each case, the first line contains 3 positive integers, N (≤10​​​ ), the total number of users, K (≤5), the total number of problems, and M (≤10 ), the total number of submissions. It is then assumed that the user id’s are 5-digit numbers from 00001 to N, and the problem id’s are from 1 to K. The next line contains K positive integers p[i] (i=1, …, K), where p[i] corresponds to the full mark of the i-th problem. Then M lines follow, each gives the information of a submission in the following format:</p>
+<p>user_id problem_id partial_score_obtained<br>where partial_score_obtained is either −1 if the submission cannot even pass the compiler, or is an integer in the range [0, p[problem_id]]. All the numbers in a line are separated by a space.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each test case, you are supposed to output the ranklist in the following format:</p>
+<p>rank user_id total_score s[1] … s[K]<br>where rank is calculated according to the total_score, and all the users with the same total_score obtain the same rank; and s[i] is the partial score obtained for the i-th problem. If a user has never submitted a solution for a problem, then “-“ must be printed at the corresponding position. If a user has submitted several solutions to solve one problem, then the highest score will be counted.</p>
+<p>The ranklist must be printed in non-decreasing order of the ranks. For those who have the same rank, users must be sorted in nonincreasing order according to the number of perfectly solved problems. And if there is still a tie, then they must be printed in increasing order of their id’s. For those who has never submitted any solution that can pass the compiler, or has never submitted any solution, they must NOT be shown on the ranklist. It is guaranteed that at least one user can be shown on the ranklist.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h2><p>7 4 20<br>20 25 25 30<br>00002 2 12<br>00007 4 17<br>00005 1 19<br>00007 2 25<br>00005 1 20<br>00002 2 2<br>00005 1 15<br>00001 1 18<br>00004 3 25<br>00002 2 25<br>00005 3 22<br>00006 4 -1<br>00001 2 18<br>00002 1 20<br>00004 1 15<br>00002 4 18<br>00001 3 4<br>00001 4 2<br>00005 2 -1<br>00004 2 0</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h2><p>1 00002 63 20 25 - 18<br>2 00005 42 20 0 22 -<br>2 00007 42 - 25 - 17<br>2 00001 42 18 18 4 2<br>5 00004 40 15 0 25 -</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct stu&#123;</span><br><span class="line">	int id;</span><br><span class="line">	int score[5];</span><br><span class="line">	int sum;</span><br><span class="line">	int rank;</span><br><span class="line">&#125;students[10010]; </span><br><span class="line">int c[10000];</span><br><span class="line">int num, testnum, subnum;</span><br><span class="line">int cmp(stu a, stu b) &#123;</span><br><span class="line">	if (a.sum &#x3D;&#x3D; b.sum )&#123;</span><br><span class="line">		int cnta &#x3D; 0,cntb &#x3D; 0;</span><br><span class="line">		for(int j &#x3D; 0; j &lt; testnum; j++) &#123;</span><br><span class="line">			if (c[j] &#x3D;&#x3D; a.score[j]) cnta++;</span><br><span class="line">			if (c[j] &#x3D;&#x3D; b.score[j]) cntb++;</span><br><span class="line">		&#125;</span><br><span class="line">		return cnta &#x3D;&#x3D; cntb? a.id &lt; b.id : cnta &gt; cntb;</span><br><span class="line">	&#125;</span><br><span class="line">	else return a.sum &gt; b.sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void print (stu a) &#123;</span><br><span class="line">	printf(&quot;%d %05d %d &quot;, a.rank,  a.id, a.sum);</span><br><span class="line">	 </span><br><span class="line">	for(int j &#x3D; 0; j &lt; testnum; j++) &#123;</span><br><span class="line">		if(j &lt; testnum - 1)&#123;</span><br><span class="line">			if(a.score[j] &gt;&#x3D; 0) &#123;</span><br><span class="line">				printf(&quot;%d &quot;, a.score[j]);</span><br><span class="line">			&#125;</span><br><span class="line">			else if(a.score[j] &#x3D;&#x3D; -1) printf(&quot;%d &quot;, a.score[j]+1);</span><br><span class="line">			else printf(&quot;- &quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		if(j &#x3D;&#x3D; testnum - 1)&#123;</span><br><span class="line">			if(a.score[j] &gt;&#x3D; 0) &#123;</span><br><span class="line">				printf(&quot;%d&quot;, a.score[j]);</span><br><span class="line">			&#125;</span><br><span class="line">			else if(a.score[j] &#x3D;&#x3D; -1) printf(&quot;%d&quot;, a.score[j]+1);</span><br><span class="line">			else printf(&quot;-&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">	cin &gt;&gt; num &gt;&gt; testnum &gt;&gt; subnum;</span><br><span class="line">	for(int j &#x3D; 0; j &lt; testnum; j++) &#123;</span><br><span class="line">			cin &gt;&gt; c[j] ;</span><br><span class="line">		&#125;</span><br><span class="line">	int tempa, tempb, tempc;</span><br><span class="line">	for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">		for(int j &#x3D; 0; j &lt; testnum; j++) &#123;</span><br><span class="line">			students[i].score[j] &#x3D; -2;</span><br><span class="line">		&#125;</span><br><span class="line">		students[i].sum &#x3D; 0;		</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i &#x3D; 0; i &lt; subnum; i++) &#123;</span><br><span class="line">		cin &gt;&gt; tempa &gt;&gt; tempb &gt;&gt; tempc;</span><br><span class="line">		tempa--;</span><br><span class="line">		if(students[tempa].score[tempb - 1] &lt; tempc)&#123;</span><br><span class="line">			students[tempa].score[tempb - 1]  &#x3D; tempc;</span><br><span class="line">			students[tempa].id &#x3D; tempa+1;	 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">		for(int j &#x3D; 0; j &lt; testnum; j++) &#123;</span><br><span class="line">			if(students[i].score[j] &gt; 0) &#123;</span><br><span class="line">				students[i].sum +&#x3D;  students[i].score[j] ;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(students, students + num, cmp);</span><br><span class="line">	students[0].rank &#x3D; 1;</span><br><span class="line">	</span><br><span class="line">	for(int i &#x3D; 1; i &lt; num; i++) &#123;</span><br><span class="line">		if(students[i].sum &#x3D;&#x3D; students[i - 1].sum) students[i].rank &#x3D; students[i-1].rank;</span><br><span class="line">		else students[i].rank &#x3D; i + 1;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">		if(students[i].sum &gt; 0)  print(students[i]);</span><br><span class="line">		else if(students[i].sum &#x3D;&#x3D; 0) </span><br><span class="line">		  for(int j &#x3D; 0; j &lt; testnum; j++) &#123; </span><br><span class="line">		    if(students[i].score[j] &#x3D;&#x3D; 0) &#123; </span><br><span class="line">		      print(students[i]); </span><br><span class="line">		      break;</span><br><span class="line">		    &#125;</span><br><span class="line">		    </span><br><span class="line">		  &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1080-Graduate-Admission-（30-分"><a href="#1080-Graduate-Admission-（30-分" class="headerlink" title="1080 Graduate Admission （30 分)"></a>1080 Graduate Admission （30 分)</h1><p>It is said that in 2013, there were about 100 graduate schools ready to proceed over 40,000 applications in Zhejiang Province. It would help a lot if you could write a program to automate the admission procedure.</p>
+<p>Each applicant will have to provide two grades: the national entrance exam grade G<del>E</del>, and the interview grade G<del>I</del>. The final grade of an applicant is (G<del>E</del> + G<del>I</del>) / 2. The admission rules are:</p>
+<p>The applicants are ranked according to their final grades, and will be admitted one by one from the top of the rank list.<br>If there is a tied final grade, the applicants will be ranked according to their national entrance exam grade G<del>E</del>. If still tied, their ranks must be the same.<br>Each applicant may have K choices and the admission will be done according to his/her choices: if according to the rank list, it is one’s turn to be admitted; and if the quota of one’s most preferred shcool is not exceeded, then one will be admitted to this school, or one’s other choices will be considered one by one in order. If one gets rejected by all of preferred schools, then this unfortunate applicant will be rejected.<br>If there is a tied rank, and if the corresponding applicants are applying to the same school, then that school must admit all the applicants with the same rank, even if its quota will be exceeded.<br>Input Specification:</p>
+<p>Each input file contains one test case. Each case starts with a line containing three positive integers: N (&lt;=40,000), the total number of applicants; M (&lt;=100), the total number of graduate schools; and K (&lt;=5), the number of choices an applicant may have.</p>
+<p>In the next line, separated by a space, there are M positive integers. The i-th integer is the quota of the i-th graduate school respectively.</p>
+<p>Then N lines follow, each contains 2+K integers separated by a space. The first 2 integers are the applicant’s G<del>E</del> and G<del>I</del>, respectively. The next K integers represent the preferred schools. For the sake of simplicity, we assume that the schools are numbered from 0 to M-1, and the applicants are numbered from 0 to N-1.</p>
+<p>Output Specification:</p>
+<p>For each test case you should output the admission results for all the graduate schools. The results of each school must occupy a line, which contains the applicants’ numbers that school admits. The numbers must be in increasing order and be separated by a space. There must be no extra space at the end of each line. If no applicant is admitted by a school, you must output an empty line correspondingly.</p>
+<p>Sample Input:<br>11 6 3<br>2 1 2 2 2 3<br>100 100 0 1 2<br>60 60 2 3 5<br>100 90 0 3 4<br>90 100 1 2 0<br>90 90 5 1 3<br>80 90 1 0 2<br>80 80 0 1 2<br>80 80 0 1 2<br>80 70 1 3 2<br>70 80 1 2 3<br>100 100 0 2 4<br>Sample Output:<br>0 10<br>3<br>5 6 7<br>2 8</p>
+<p>1 4</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><p>ps:1.有两个测试点没有通过。。。<br>     2.一个赋值语句的 = 写成了 == 导致查bug 查了半个小时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct stu &#123;</span><br><span class="line">  int rank;</span><br><span class="line">  int sum,id;</span><br><span class="line">  int want[5];</span><br><span class="line">  int score[2];</span><br><span class="line">&#125;students[40000],origin[40000];</span><br><span class="line"></span><br><span class="line">int cmp(stu a, stu b) &#123;</span><br><span class="line">  return a.sum &#x3D;&#x3D; b.sum ? a.score[0] &gt; b.score[0] : a.sum &gt; b.sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  int save[100][100] &#x3D; &#123;-1&#125;; &#x2F;&#x2F; 录取的学号统计</span><br><span class="line">  int ac[100] &#x3D; &#123;0&#125;; &#x2F;&#x2F; 已经录取的人数</span><br><span class="line">  int M[100]; &#x2F;&#x2F; 各学校要的人数</span><br><span class="line">  int num, Mnum, Knum;</span><br><span class="line">  cin &gt;&gt; num &gt;&gt; Mnum &gt;&gt; Knum;</span><br><span class="line">  int i,j;</span><br><span class="line">  for(i &#x3D; 0; i &lt; Mnum; i++) cin &gt;&gt; M[i];</span><br><span class="line">  for(i &#x3D; 0; i&lt; num; i++) &#123;</span><br><span class="line">    cin &gt;&gt; students[i].score[0] &gt;&gt; students[i].score[1];</span><br><span class="line">    students[i].sum &#x3D; students[i].score[0] + students[i].score[1];</span><br><span class="line">    students[i].id &#x3D; i;</span><br><span class="line">    for(j &#x3D; 0; j &lt; Knum; j++) cin &gt;&gt; students[i].want[j];</span><br><span class="line">    origin[i] &#x3D; students[i];</span><br><span class="line">  &#125;</span><br><span class="line">  sort(students, students + num, cmp);</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">  students[0].rank &#x3D; 1;</span><br><span class="line">  origin[students[0].id].rank &#x3D; 1;</span><br><span class="line">  for(i &#x3D; 1; i &lt; num; i++ )&#123;</span><br><span class="line">    if(students[i].score[0] &#x3D;&#x3D; students[i - 1].score[0] &amp;&amp; students[i].sum &#x3D;&#x3D; students[i - 1].sum) &#123;students[i].rank &#x3D; students[i - 1].rank;  origin[students[i].id].rank &#x3D; students[i - 1].rank;&#125;</span><br><span class="line">    else &#123;students[i].rank &#x3D; i + 1; origin[students[i].id ].rank &#x3D; i + 1;&#125;</span><br><span class="line">	&#x2F;&#x2F;cout &lt;&lt; students[i].id</span><br><span class="line">  &#125; </span><br><span class="line">&#x2F;&#x2F;  for( i &#x3D; 0; i &lt; num; i++)&#123; cout &lt;&lt; origin[i].id &lt;&lt;&quot; &quot;&lt;&lt; origin[i].rank&lt;&lt; endl;&#125;&#x2F;&#x2F;</span><br><span class="line">  int flag[40000] &#x3D;&#123;0&#125;;</span><br><span class="line">  for(i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">    for(j &#x3D; 0; j &lt; Knum; j++ )&#123;</span><br><span class="line">      int temp &#x3D; students[i].want[j];</span><br><span class="line">      if(ac[temp] &lt; M[temp] &amp;&amp; flag[students[i].id] &#x3D;&#x3D; 0) &#123; save[temp][ac[temp]] &#x3D; students[i].id; ac[temp]++; flag[students[i].id] &#x3D;  1;&#125;</span><br><span class="line">      else if(ac[temp] &#x3D;&#x3D; M[temp] &amp;&amp; origin[save[temp][ac[temp]-1]].rank &#x3D;&#x3D; students[i].rank &amp;&amp; flag[students[i].id] &#x3D;&#x3D; 0 &amp;&amp; M[temp] !&#x3D; 0 )&#123; save[temp][ac[temp]] &#x3D; students[i].id; ac[temp]++;  flag[students[i].id] &#x3D;  1;&#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  for(i &#x3D; 0; i &lt; Mnum; i++) sort(save[i], save[i] + ac[i]);</span><br><span class="line">  for(i &#x3D; 0; i &lt; Mnum; i++) &#123;</span><br><span class="line">    if(ac[i] &#x3D;&#x3D; 0)&#123;printf(&quot;\n&quot;); continue;&#125;</span><br><span class="line">    for(j &#x3D; 0; j &lt; ac[i]; j++)&#123; </span><br><span class="line">      if(j &lt; ac[i] - 1) printf(&quot;%d &quot;,save[i][j]);</span><br><span class="line">      else printf(&quot;%d&quot;, save[i][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h2><p>1.save可以写成结构体类型，保存更方便<br>2.先确定数组大小，再定义数组<br>3.不用为了tie而再去重新排名，只需记录最后录取同学的序号，通过save找到，判定其总成绩和ge都相等即可</p>
+<h2 id="改进的代码"><a href="#改进的代码" class="headerlink" title="改进的代码"></a>改进的代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct stu&#123;</span><br><span class="line">    int id, ge, gi, sum;</span><br><span class="line">    vector&lt;int&gt; want;</span><br><span class="line">&#125;;</span><br><span class="line">bool cmp(stu&amp; a, stu&amp; b) &#123;</span><br><span class="line">    if (a.sum !&#x3D; b.sum) return a.sum &gt; b.sum;</span><br><span class="line">    return a.ge &gt; b.ge;</span><br><span class="line">&#125;</span><br><span class="line">bool cmp2(stu&amp; a, stu&amp; b) &#123;</span><br><span class="line">  return a.id &lt; b.id;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int n, m, k, ac[110], cnt[110] &#x3D; &#123;0&#125;;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k);</span><br><span class="line">    vector&lt;stu&gt; stu(n), save[110];</span><br><span class="line">    for(int i &#x3D; 0; i &lt; m; i++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;ac[i]);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;stu[i].ge, &amp;stu[i].gi);</span><br><span class="line">        stu[i].id &#x3D; i;</span><br><span class="line">        stu[i].sum &#x3D; stu[i].ge + stu[i].gi;</span><br><span class="line">        stu[i].want.resize(k);</span><br><span class="line">        for(int j &#x3D; 0; j &lt; k; j++)</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;stu[i].want[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(stu.begin(), stu.end(), cmp);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        for(int j &#x3D; 0; j &lt; k; j++) &#123;</span><br><span class="line">            int temp &#x3D; stu[i].want[j]; &#x2F;&#x2F;想去的学校的序号</span><br><span class="line">            int lastindex &#x3D; cnt[temp] - 1;</span><br><span class="line">            if(cnt[temp] &lt; ac[temp] || (stu[i].sum &#x3D;&#x3D; save[temp][lastindex].sum) &amp;&amp; stu[i].ge &#x3D;&#x3D; save[temp][lastindex].ge) &#123;</span><br><span class="line">                save[temp].push_back(stu[i]);</span><br><span class="line">                cnt[temp]++;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        sort(save[i].begin(), save[i].end(), cmp2);</span><br><span class="line">        for(int j &#x3D; 0; j &lt; cnt[i]; j++) &#123;</span><br><span class="line">            if(j !&#x3D; 0) printf(&quot; &quot;);</span><br><span class="line">            printf(&quot;%d&quot;, save[i][j].id);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="1148-Werewolf-Simple-Version-（20-分"><a href="#1148-Werewolf-Simple-Version-（20-分" class="headerlink" title="1148 Werewolf - Simple Version （20 分)"></a>1148 Werewolf - Simple Version （20 分)</h1><p>Werewolf（狼人杀） is a game in which the players are partitioned into two parties: the werewolves and the human beings. Suppose that in a game,</p>
+<p>player #1 said: “Player #2 is a werewolf.”;<br>player #2 said: “Player #3 is a human.”;<br>player #3 said: “Player #4 is a werewolf.”;<br>player #4 said: “Player #5 is a human.”; and<br>player #5 said: “Player #4 is a human.”.<br>Given that there were 2 werewolves among them, at least one but not all the werewolves were lying, and there were exactly 2 liars. Can you point out the werewolves?</p>
+<p>Now you are asked to solve a harder version of this problem: given that there were N players, with 2 werewolves among them, at least one but not all the werewolves were lying, and there were exactly 2 liars. You are supposed to point out the werewolves.</p>
+<h2 id="Input-Specification-1"><a href="#Input-Specification-1" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. For each case, the first line gives a positive integer N (5≤N≤100). Then N lines follow and the i-th line gives the statement of the i-th player (1≤i≤N), which is represented by the index of the player with a positive sign for a human and a negative sign for a werewolf.</p>
+<h2 id="Output-Specification-1"><a href="#Output-Specification-1" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>If a solution exists, print in a line in ascending order the indices of the two werewolves. The numbers must be separated by exactly one space with no extra spaces at the beginning or the end of the line. If there are more than one solution, you must output the smallest solution sequence – that is, for two sequences A=a[1],…,a[M] and B=b[1],…,b[M], if there exists 0≤k&lt;M such that a[i]=b[i] (i≤k) and a[k+1]&lt;b[k+1], then A is said to be smaller than B. In case there is no solution, simply print No Solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Sample Input 1:</span><br><span class="line">5</span><br><span class="line">-2</span><br><span class="line">+3</span><br><span class="line">-4</span><br><span class="line">+5</span><br><span class="line">+4</span><br><span class="line">Sample Output 1:</span><br><span class="line">1 4</span><br><span class="line">Sample Input 2:</span><br><span class="line">6</span><br><span class="line">+6</span><br><span class="line">+3</span><br><span class="line">+1</span><br><span class="line">-5</span><br><span class="line">-2</span><br><span class="line">+4</span><br><span class="line">Sample Output 2 (the solution is not unique):</span><br><span class="line">1 5</span><br><span class="line">Sample Input 3:</span><br><span class="line">5</span><br><span class="line">-2</span><br><span class="line">-3</span><br><span class="line">-4</span><br><span class="line">-5</span><br><span class="line">-1</span><br><span class="line">Sample Output 3:</span><br><span class="line">No Solution</span><br></pre></td></tr></table></figure>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;fstream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">  int i,j,k,cnt &#x3D; 0;</span><br><span class="line">  int a[110], b[110] , result[110];</span><br><span class="line">  int liar[5], lie, splie;</span><br><span class="line">  int num;</span><br><span class="line">#ifdef _DEBUG</span><br><span class="line">	ifstream cin(&quot;data.txt&quot;);</span><br><span class="line">#endif</span><br><span class="line">  cin &gt;&gt; num ;</span><br><span class="line">  for(i &#x3D; 1; i &lt;&#x3D; num; i++) &#123;</span><br><span class="line">    int temp;</span><br><span class="line">    cin &gt;&gt; temp;</span><br><span class="line">    if(temp &lt; 0)&#123;  b[i] &#x3D; -1;  a[i] &#x3D; -temp;&#125;</span><br><span class="line">	</span><br><span class="line">	else&#123; a[i] &#x3D; temp; b[i] &#x3D; 1;&#125;</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">    for(int i &#x3D; 1; i &lt;&#x3D; num; i++)&#123;</span><br><span class="line">      for(j &#x3D; i + 1; j &lt;&#x3D; num; j++) &#123;</span><br><span class="line">        for(int m &#x3D; 1; m &lt;&#x3D; num; m++) &#123;result[m] &#x3D; 1; liar[m]&#x3D;0;&#125;</span><br><span class="line">        result[i] &#x3D; -1;</span><br><span class="line">        result[j] &#x3D; -1;</span><br><span class="line">        cnt &#x3D; lie &#x3D; splie &#x3D; 0;</span><br><span class="line">        for(k &#x3D; 1; k &lt;&#x3D; num; k++)&#123;</span><br><span class="line">          if(b[k] !&#x3D; result[a[k]])&#123;</span><br><span class="line">            if(k &#x3D;&#x3D; i || k &#x3D;&#x3D; j)&#123; splie++; liar[cnt++] &#x3D; k;&#125;</span><br><span class="line">            else &#123; lie++; liar[cnt++] &#x3D; k;&#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(lie &#x3D;&#x3D; 1 &amp;&amp; splie &#x3D;&#x3D; 1) &#123;</span><br><span class="line">          cout &lt;&lt; i&lt;&lt; &quot; &quot; &lt;&lt; j;</span><br><span class="line">          return 0;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;No Solution&quot;);</span><br><span class="line">#ifdef _DEBUG</span><br><span class="line">	cin.close();</span><br><span class="line">#endif</span><br><span class="line">    return 0;</span><br><span class="line">    </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Code2"><a href="#Code2" class="headerlink" title="Code2"></a>Code2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn &#x3D; 1e3 + 10;</span><br><span class="line">int a[maxn];</span><br><span class="line">int main()&#123; </span><br><span class="line">    int num, i, j; </span><br><span class="line">    cin &gt;&gt; num; </span><br><span class="line">    for(i &#x3D; 1 ; i &lt;&#x3D; num; i++)&#123;  </span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(i &#x3D; 1 ; i &lt;&#x3D; num; i++)&#123;  </span><br><span class="line">        for(j &#x3D; i + 1; j &lt;&#x3D; num; j++)&#123;&#x2F;&#x2F; i 和j 代表狼 本质上没有顺序的前后</span><br><span class="line">            int  flagwolf &#x3D; 0, flagcitizen &#x3D; 0, cnt &#x3D; 0;&#x2F;&#x2F; 分别标记是否有狼和民说谎及说谎的人数 </span><br><span class="line">            vector&lt;int&gt; goodorbad(num + 1, 1);</span><br><span class="line">            goodorbad[i] &#x3D; - 1; goodorbad[j] &#x3D; - 1;			</span><br><span class="line">            for(int k &#x3D; 1; k &lt;&#x3D; num; k++)&#123;   &#x2F;&#x2F; 判断第k个人是否说谎</span><br><span class="line">				int temp1 &#x3D; a[k], temp2 &#x3D; goodorbad[abs(a[k])];</span><br><span class="line">                if (temp1 * temp2 &lt; 0)&#123;  </span><br><span class="line">                    cnt++;  </span><br><span class="line">                    if((k &#x3D;&#x3D; i || k &#x3D;&#x3D; j))&#123; if(flagwolf &#x3D;&#x3D; 0 ) flagwolf &#x3D; 1;&#125;</span><br><span class="line">                    else if(flagcitizen &#x3D;&#x3D; 0) flagcitizen &#x3D; 1;   </span><br><span class="line">                &#125; </span><br><span class="line">            &#125;</span><br><span class="line">            if(cnt &#x3D;&#x3D; 2 &amp;&amp; flagcitizen &#x3D;&#x3D; 1 &amp;&amp; flagwolf &#x3D;&#x3D; 1)&#123; </span><br><span class="line">               cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j;</span><br><span class="line">				return 0;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &quot;No Solution&quot;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小札"><a href="#小札" class="headerlink" title="小札"></a>小札</h2><ol>
+<li>理解错误了 at least one but not all 的意思，导致怎么搞都没搞的出来</li>
+<li>用两个数组存取读入的信息这个决定有些不妥，并且再后面判断是否说谎的时候犯了错误:<br>  (b[k] != result[a[k]]) 写成了(a[b[k]] != result[a[k]])</li>
+<li>所用时间有些长具体各阶段时间并没有详细划分，不过总时间是一个半小时，难怪真正考试的时候又那么多同学被这道题卡住了。</li>
+<li>思路很重要，看完liu神的思路发现</li>
+</ol>
+<h1 id="1095-Cars-on-Campus-（30-分"><a href="#1095-Cars-on-Campus-（30-分" class="headerlink" title="1095 Cars on Campus （30 分)"></a>1095 Cars on Campus （30 分)</h1><p>Zhejiang University has 8 campuses and a lot of gates. From each gate we can collect the in/out times and the plate numbers of the cars crossing the gate. Now with all the information available, you are supposed to tell, at any specific time point, the number of cars parking on campus, and at the end of the day find the cars that have parked for the longest time period.</p>
+<h2 id="Input-Specification-2"><a href="#Input-Specification-2" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. Each case starts with two positive integers N (≤10<br>​4<br>​​ ), the number of records, and K (≤8×10<br>​4<br>​​ ) the number of queries. Then N lines follow, each gives a record in the format:</p>
+<p>plate_number hh:mm:ss status<br>where plate_number is a string of 7 English capital letters or 1-digit numbers; hh:mm:ss represents the time point in a day by hour:minute:second, with the earliest time being 00:00:00 and the latest 23:59:59; and status is either in or out.</p>
+<p>Note that all times will be within a single day. Each in record is paired with the chronologically next record for the same car provided it is an out record. Any in records that are not paired with an out record are ignored, as are out records not paired with an in record. It is guaranteed that at least one car is well paired in the input, and no car is both in and out at the same moment. Times are recorded using a 24-hour clock.</p>
+<p>Then K lines of queries follow, each gives a time point in the format hh:mm:ss. Note: the queries are given in ascending order of the times.</p>
+<h2 id="Output-Specification-2"><a href="#Output-Specification-2" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each query, output in a line the total number of cars parking on campus. The last line of output is supposed to give the plate number of the car that has parked for the longest time period, and the corresponding time length. If such a car is not unique, then output all of their plate numbers in a line in alphabetical order, separated by a space.</p>
+<h2 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input:"></a>Sample Input:</h2><p>16 7<br>JH007BD 18:00:01 in<br>ZD00001 11:30:08 out<br>DB8888A 13:00:00 out<br>ZA3Q625 23:59:50 out<br>ZA133CH 10:23:00 in<br>ZD00001 04:09:59 in<br>JH007BD 05:09:59 in<br>ZA3Q625 11:42:01 out<br>JH007BD 05:10:33 in<br>ZA3Q625 06:30:50 in<br>JH007BD 12:23:42 out<br>ZA3Q625 23:55:00 in<br>JH007BD 12:24:23 out<br>ZA133CH 17:11:22 out<br>JH007BD 18:07:01 out<br>DB8888A 06:30:50 in<br>05:10:00<br>06:30:50<br>11:00:00<br>12:23:42<br>14:00:00<br>18:00:00<br>23:59:00</p>
+<h2 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output:"></a>Sample Output:</h2><p>1<br>4<br>5<br>2<br>1<br>0<br>1<br>JH007BD ZD00001 07:20:09</p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><ol>
+<li>时间存在一个int型数里，方便存取</li>
+<li>想找到配对 需整体根据姓名排名局部根据时间排名</li>
+<li>进加出减，可以充分利用flag计数</li>
+<li>开始时思路不明确，sort错了内容。。。</li>
+<li>用map存时间最长的<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct car &#123;</span><br><span class="line">    char id[10];</span><br><span class="line">    int time, flag ;</span><br><span class="line">&#125;;</span><br><span class="line">bool cmp1(car a, car b) &#123;</span><br><span class="line">  return strcmp(a.id , b.id) &#x3D;&#x3D; 0 ? a.time &lt; b.time : strcmp(a.id , b.id) &lt; 0 ;</span><br><span class="line">&#125;</span><br><span class="line">bool cmp2(car a, car b) &#123; </span><br><span class="line">    return a.time &lt; b.time;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n, k, maxtime &#x3D; -1, tempindex &#x3D; 0;</span><br><span class="line">    scanf(&quot;%d%d\n&quot;, &amp;n, &amp;k);</span><br><span class="line">    vector&lt;car&gt; cars(n), valid;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        char temp[5];</span><br><span class="line">        int h, m, s;</span><br><span class="line">        scanf(&quot;%s %d:%d:%d %s\n&quot;, cars[i].id, &amp;h, &amp;m, &amp;s, temp);</span><br><span class="line">        int temptime &#x3D; h * 3600 + m * 60 + s;</span><br><span class="line">        cars[i].time &#x3D; temptime;</span><br><span class="line">        cars[i].flag &#x3D; strcmp(temp, &quot;in&quot;) &#x3D;&#x3D; 0 ? 1 : -1;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(cars.begin(), cars.end(), cmp1);</span><br><span class="line">    map&lt;string, int&gt; mapp;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">        if(strcmp(cars[i].id, cars[i+1].id) &#x3D;&#x3D; 0 &amp;&amp; cars[i].flag &#x3D;&#x3D; 1 &amp;&amp; cars[i+1].flag &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            valid.push_back(cars[i]);</span><br><span class="line">            valid.push_back(cars[i+1]);</span><br><span class="line">            mapp[cars[i].id] +&#x3D; (cars[i+1].time - cars[i].time);</span><br><span class="line">            if(maxtime &lt; mapp[cars[i].id]) &#123;</span><br><span class="line">                maxtime &#x3D; mapp[cars[i].id];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(valid.begin(), valid.end(), cmp2);</span><br><span class="line">    vector&lt;int&gt; cnt(n);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; valid.size(); i++) &#123;</span><br><span class="line">        if(i &#x3D;&#x3D; 0)</span><br><span class="line">            cnt[i] +&#x3D; valid[i].flag;</span><br><span class="line">         else</span><br><span class="line">            cnt[i] &#x3D; cnt[i - 1] + valid[i].flag;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">        int h, m, s;</span><br><span class="line">        scanf(&quot;%d:%d:%d&quot;, &amp;h, &amp;m, &amp;s);</span><br><span class="line">        int temptime &#x3D; h * 3600 + m * 60 + s;</span><br><span class="line">        int j;</span><br><span class="line">        for(j &#x3D; tempindex; j &lt; valid.size(); j++) &#123;</span><br><span class="line">            if(valid[j].time &gt; temptime) &#123;</span><br><span class="line">                printf(&quot;%d\n&quot;, cnt[j - 1]);</span><br><span class="line">                break;</span><br><span class="line">            &#125; else if(j &#x3D;&#x3D; valid.size() - 1) &#123;</span><br><span class="line">                printf(&quot;%d\n&quot;, cnt[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        tempindex &#x3D; j;</span><br><span class="line">    &#125;</span><br><span class="line">    for(map&lt;string, int&gt;::iterator it &#x3D; mapp.begin(); it !&#x3D; mapp.end(); it++) &#123;</span><br><span class="line">        if(it-&gt;second &#x3D;&#x3D; maxtime)</span><br><span class="line">            printf(&quot;%s &quot;, it-&gt;first.c_str());</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%02d:%02d:%02d&quot;, maxtime &#x2F; 3600, (maxtime % 3600) &#x2F; 60, maxtime % 60);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Aborted-Code"><a href="#Aborted-Code" class="headerlink" title="Aborted Code"></a>Aborted Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;fstream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">struct car &#123;  </span><br><span class="line">  char name[10];</span><br><span class="line">  int time;</span><br><span class="line">  int state;</span><br><span class="line">  int sum;</span><br><span class="line">&#125;;</span><br><span class="line">int cmp1(car a, car b) &#123;</span><br><span class="line">  return strcmp(a.name , b.name) &#x3D;&#x3D; 0 ? a.time &lt; b.time : strcmp(a.name , b.name) &lt; 0 ;</span><br><span class="line">&#125;</span><br><span class="line">int cmp2(car a, car b) &#123;</span><br><span class="line">  return a.time &lt; b.time;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">  int num,queries;</span><br><span class="line">  int k&#x3D;0;</span><br><span class="line"> </span><br><span class="line">  cin &gt;&gt; num &gt;&gt; queries;</span><br><span class="line">  vector &lt;car&gt; cars(num);</span><br><span class="line">  vector &lt;car&gt; valid(num);</span><br><span class="line">  for(int i &#x3D; 0; i &lt; num; i++) &#123;</span><br><span class="line">    int temp1, temp2, temp3;</span><br><span class="line">    char tempc[10];</span><br><span class="line">    scanf(&quot;%s %d:%d:%d %s&quot;, &amp;cars[i].name, &amp;temp1, &amp;temp2, &amp;temp3,tempc);</span><br><span class="line">    cars[i].sum &#x3D; 0;</span><br><span class="line">    cars[i].time &#x3D; temp1 * 3600 + temp2 * 60 + temp3;</span><br><span class="line">    strcmp(tempc,&quot;in&quot;) &#x3D;&#x3D; 0 ? cars[i].state &#x3D; 1 : cars[i].state &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line">  sort(cars.begin(), cars.end(), cmp1);</span><br><span class="line">  int temp &#x3D; cars[0].state;</span><br><span class="line">  int point &#x3D; 0;</span><br><span class="line">  int cnt &#x3D; 0;</span><br><span class="line">  int mem &#x3D; 0;</span><br><span class="line">  for(int i &#x3D; 1; i &lt; num; i++)&#123;</span><br><span class="line">    temp &#x3D; cars[i-1].state;</span><br><span class="line">	</span><br><span class="line">    if(strcmp(cars[i].name , cars[i-1].name) &#x3D;&#x3D; 0)&#123;</span><br><span class="line">      if(temp + cars[i].state &#x3D;&#x3D; 2) point &#x3D; i; </span><br><span class="line">      else if(temp &#x3D;&#x3D; 1 &amp;&amp; cars[i].state &#x3D;&#x3D; 0) &#123;</span><br><span class="line">		  valid[cnt++] &#x3D; cars[i-1];</span><br><span class="line">		  valid[cnt] &#x3D; cars[i];</span><br><span class="line">		  valid[cnt].sum &#x3D; cars[i].time - cars[i-1].time + mem;</span><br><span class="line">		  mem &#x3D;valid[cnt++].sum ;</span><br><span class="line">	  &#125; </span><br><span class="line">    &#125;</span><br><span class="line">	else mem &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line">   char maxname[5][10];</span><br><span class="line">   int max &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  for(int j &#x3D; 0;  j &lt; cnt - 1; j++) &#123;</span><br><span class="line">     </span><br><span class="line">   </span><br><span class="line">	if(valid[j].sum &gt; max) &#123;</span><br><span class="line">		k&#x3D;0;</span><br><span class="line">		max &#x3D; valid[j].sum; </span><br><span class="line">		strcpy(maxname[k], valid[j].name);</span><br><span class="line">	&#125;</span><br><span class="line">    else if(valid[j].sum &#x3D;&#x3D; max) &#123;</span><br><span class="line">		if(j !&#x3D;0)</span><br><span class="line">			strcpy(maxname[++k],valid[j].name);</span><br><span class="line">		else</span><br><span class="line">			strcpy(maxname[k],valid[j].name);</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;	 printf(&quot;%s &quot; , maxname[0]);	</span><br><span class="line">  &#125; </span><br><span class="line">  sort(valid.begin(), valid.end(), cmp2); </span><br><span class="line">  for(int i &#x3D; 0;  i &lt; cnt - 1; i++) &#123;&#x2F;&#x2F;</span><br><span class="line">	 printf(&quot;%s &quot; , valid[i].name);</span><br><span class="line">     printf(&quot;%d:%d:%d&quot;,  valid[i].time&#x2F;3600, ( valid[i].time&#x2F;60)%60, valid[i].time%60);</span><br><span class="line">	 printf(&quot; %d\n&quot;, valid[i].state);</span><br><span class="line">  &#125; </span><br><span class="line">   while(1);</span><br><span class="line">  &#x2F;&#x2F;*&#x2F;</span><br><span class="line">  for(int i &#x3D; 0; i &lt; queries; i++) &#123;</span><br><span class="line">      int temp1, temp2, temp3, time; </span><br><span class="line">	  int empty &#x3D; 0;</span><br><span class="line">      scanf(&quot;%d:%d:%d&quot;, &amp;temp1, &amp;temp2, &amp;temp3);</span><br><span class="line">      time &#x3D; temp1 * 3600 + temp2 * 60 + temp3;</span><br><span class="line">      for(int j &#x3D; 0; valid[j].time &lt; time &amp;&amp; j &lt; cnt - 1; j++) &#123;</span><br><span class="line">		  if(valid[j].state &#x3D;&#x3D; 1) empty ++;</span><br><span class="line">		  else</span><br><span class="line">		  empty -- ;</span><br><span class="line">      &#125;</span><br><span class="line">	  if(empty &gt;&#x3D;  0)</span><br><span class="line">		 printf(&quot;%d\n&quot;,  empty );</span><br><span class="line">  &#125;</span><br><span class="line">  for(int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">	  printf(&quot;%s &quot; , maxname[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  printf(&quot;%02d:%02d:%02d&quot;, max&#x2F;3600, (max&#x2F;60)%60,max%60);</span><br><span class="line"> </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://s1.ax1x.com/2020/10/06/0UUsFU.md.png',
+  alipayImage: 'https://s1.ax1x.com/2020/10/06/0UUyYF.md.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Neoth</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/07/03/PAT2/" target="_blank" title="PAT2">http://example.com/2019/07/03/PAT2/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/08/DS-A/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DS-A
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/16/PAT/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PAT1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1055-The-World%E2%80%99s-Richest-%EF%BC%8825-%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">1055 The World’s Richest （25 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B6%85%E6%97%B6%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">超时代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1075-PAT-Judge-%EF%BC%8825-%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">1075 PAT Judge （25 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Specification"><span class="nav-number">2.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Specification"><span class="nav-number">2.2.</span> <span class="nav-text">Output Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">2.3.</span> <span class="nav-text">Sample Input:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">2.4.</span> <span class="nav-text">Sample Output:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.5.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1080-Graduate-Admission-%EF%BC%8830-%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">1080 Graduate Admission （30 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E5%8D%87"><span class="nav-number">3.2.</span> <span class="nav-text">提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="nav-number">3.3.</span> <span class="nav-text">改进的代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1148-Werewolf-Simple-Version-%EF%BC%8820-%E5%88%86"><span class="nav-number">4.</span> <span class="nav-text">1148 Werewolf - Simple Version （20 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Specification-1"><span class="nav-number">4.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Specification-1"><span class="nav-number">4.2.</span> <span class="nav-text">Output Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.3.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code2"><span class="nav-number">4.4.</span> <span class="nav-text">Code2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%9C%AD"><span class="nav-number">4.5.</span> <span class="nav-text">小札</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1095-Cars-on-Campus-%EF%BC%8830-%E5%88%86"><span class="nav-number">5.</span> <span class="nav-text">1095 Cars on Campus （30 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Specification-2"><span class="nav-number">5.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Specification-2"><span class="nav-number">5.2.</span> <span class="nav-text">Output Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-1"><span class="nav-number">5.3.</span> <span class="nav-text">Sample Input:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output-1"><span class="nav-number">5.4.</span> <span class="nav-text">Sample Output:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analyse"><span class="nav-number">5.5.</span> <span class="nav-text">Analyse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">5.6.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aborted-Code"><span class="nav-number">5.7.</span> <span class="nav-text">Aborted Code</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 Hexo All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Hexo
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Neoth All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ds-d | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Study" />
+  
+  
+  
+  
+  <meta name="description" content="06-图2 Saving James Bond - Easy Version (25 分)This time let us consider the situation in the movie “Live and Let Die” in which James Bond, the world’s most famous spy, was captured by a group of drug d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DS-D">
+<meta property="og:url" content="http://example.com/2020/07/06/pat%E6%A8%A1%E6%8B%9F%E6%8B%9F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="06-图2 Saving James Bond - Easy Version (25 分)This time let us consider the situation in the movie “Live and Let Die” in which James Bond, the world’s most famous spy, was captured by a group of drug d">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190510230035518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzM5NTc1,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-07-06T15:45:01.000Z">
+<meta property="article:modified_time" content="2020-10-08T14:44:05.384Z">
+<meta property="article:author" content="Neoth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190510230035518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzM5NTc1,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/resizeApi.png">
+  <link rel="apple-touch-icon" href="/css/images/resizeApi.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("/css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("/css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("/css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/resizeApi.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-pat模拟拟" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      DS-D
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/07/06/pat%E6%A8%A1%E6%8B%9F%E6%8B%9F/" class="article-date">
+	  <time datetime="2020-07-06T15:45:01.000Z" itemprop="datePublished">2020-07-06</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="06-图2-Saving-James-Bond-Easy-Version-25-分"><a href="#06-图2-Saving-James-Bond-Easy-Version-25-分" class="headerlink" title="06-图2 Saving James Bond - Easy Version (25 分)"></a>06-图2 Saving James Bond - Easy Version (25 分)</h1><p>This time let us consider the situation in the movie “Live and Let Die” in which James Bond, the world’s most famous spy, was captured by a group of drug dealers. He was sent to a small piece of land at the center of a lake filled with crocodiles. There he performed the most daring action to escape – he jumped onto the head of the nearest crocodile! Before the animal realized what was happening, James jumped again onto the next big head… Finally he reached the bank before the last crocodile could bite him (actually the stunt man was caught by the big mouth and barely escaped with his extra thick boot).</p>
+<p>Assume that the lake is a 100 by 100 square one. Assume that the center of the lake is at (0,0) and the northeast corner at (50,50). The central island is a disk centered at (0,0) with the diameter of 15. A number of crocodiles are in the lake at various positions. Given the coordinates of each crocodile and the distance that James could jump, you must tell him whether or not he can escape.</p>
+<h2 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. Each case starts with a line containing two positive integers N (≤100), the number of crocodiles, and D, the maximum distance that James could jump. Then N lines follow, each containing the (x,y) location of a crocodile. Note that no two crocodiles are staying at the same position.</p>
+<h2 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each test case, print in a line “Yes” if James can escape, or “No” if not.</p>
+<h2 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1:"></a>Sample Input 1:</h2><p>14 20<br>25 -15<br>-25 28<br>8 49<br>29 15<br>-35 -2<br>5 28<br>27 -29<br>-8 -28<br>-20 -35<br>-25 -20<br>-13 29<br>-30 15<br>-35 40<br>12 12</p>
+<h2 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1:"></a>Sample Output 1:</h2><p>Yes</p>
+<h2 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input 2:"></a>Sample Input 2:</h2><p>4 13<br>-12 12<br>12 12<br>-12 -12<br>12 -12</p>
+<h2 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output 2:"></a>Sample Output 2:</h2><p>No</p>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ol>
+<li><p>最小跳，人工乱序这个点过不了</p>
+</li>
+<li><p>过了， &gt;= 搞成了 &gt; 查了两晚上，终于查出来了。。。。</p>
+</li>
+<li><p>注意图的抽象概念，利用结构体存储也是可以的。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAX 10010</span><br><span class="line">struct crocodile&#123;</span><br><span class="line">    int x;</span><br><span class="line">    int y;</span><br><span class="line">&#125;crocs[MAX];</span><br><span class="line">int dis, num;</span><br><span class="line">int safe &#x3D; 0;</span><br><span class="line">int visited[MAX] &#x3D; &#123;0&#125;;</span><br><span class="line">bool Distance(int i, int j) &#123;</span><br><span class="line">    if(i &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        if(pow(abs(0 - crocs[j].x) , 2) + pow(abs(0 - crocs[j].y) , 2) &gt; pow(dis + 7.5, 2))</span><br><span class="line">            return 0;</span><br><span class="line">        else return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        if(pow(abs(crocs[i].x - crocs[j].x) , 2) + pow(abs(crocs[i].y - crocs[j].y) , 2) &gt; pow(dis, 2))</span><br><span class="line">            return 0;</span><br><span class="line">        else return 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">bool IsSafe(int i) &#123;</span><br><span class="line">    if(crocs[i].x &gt; 50 - dis || crocs[i].x &lt; dis - 50 || crocs[i].y &gt; 50 - dis || crocs[i].y &lt; dis -50)</span><br><span class="line">        return 1;</span><br><span class="line">    else return 0;</span><br><span class="line">&#125;</span><br><span class="line">void Dfs(int i)&#123;</span><br><span class="line">    if(IsSafe(i) &amp;&amp; safe &#x3D;&#x3D; 0)&#123;</span><br><span class="line">        cout &lt;&lt; &quot;Yes&quot;;</span><br><span class="line">		safe &#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        for(int j &#x3D; 1 ; j &lt;&#x3D; num; j++) &#123;</span><br><span class="line">            if(Distance(i, j) &#x3D;&#x3D; 1 &amp;&amp; visited[j] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                visited[j] &#x3D; 1;</span><br><span class="line">                Dfs(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    cin &gt;&gt; num &gt;&gt; dis;</span><br><span class="line">    crocs[0].x &#x3D; crocs[0].y &#x3D; 0;</span><br><span class="line">    for(int i &#x3D; 1; i &lt;&#x3D; num; i++) &#123;</span><br><span class="line">        int a, b;</span><br><span class="line">        cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        crocs[i].x &#x3D; a;</span><br><span class="line">        crocs[i].y &#x3D; b;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i &#x3D; 1; i &lt;&#x3D; num; i++) &#123;</span><br><span class="line">        if(Distance(0, i) &#x3D;&#x3D; 1 &amp;&amp; visited[i] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            visited[i] &#x3D; 1;</span><br><span class="line">            Dfs(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	if(!safe)</span><br><span class="line">		cout &lt;&lt; &quot;No&quot;;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="06-图3-六度空间-30-分"><a href="#06-图3-六度空间-30-分" class="headerlink" title="06-图3 六度空间 (30 分)"></a>06-图3 六度空间 (30 分)</h1><p>“六度空间”理论又称作“六度分隔（Six Degrees of Separation）”理论。这个理论可以通俗地阐述为：“你和任何一个陌生人之间所间隔的人不会超过六个，也就是说，最多通过五个人你就能够认识任何一个陌生人。”如图1所示。<br><img src="https://img-blog.csdnimg.cn/20190510230035518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzM5NTc1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<p>图1 六度空间示意图<br>“六度空间”理论虽然得到广泛的认同，并且正在得到越来越多的应用。但是数十年来，试图验证这个理论始终是许多社会学家努力追求的目标。然而由于历史的原因，这样的研究具有太大的局限性和困难。随着当代人的联络主要依赖于电话、短信、微信以及因特网上即时通信等工具，能够体现社交网络关系的一手数据已经逐渐使得“六度空间”理论的验证成为可能。</p>
+<p>假如给你一个社交网络图，请你对每个节点计算符合“六度空间”理论的结点占结点总数的百分比。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h2><p>输入第1行给出两个正整数，分别表示社交网络图的结点数N（1&lt;N≤10^4​ ，表示人数）、边数M（≤33×N，表示社交关系数）。随后的M行对应M条边，每行给出一对正整数，分别是该条边直接连通的两个结点的编号（节点从1到N编号）。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h2><p>对每个结点输出与该结点距离不超过6的结点数占结点总数的百分比，精确到小数点后2位。每个结节点输出一行，格式为“结点编号:（空格）百分比%”。</p>
+<h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h2><p>10 9<br>1 2<br>2 3<br>3 4<br>4 5<br>5 6<br>6 7<br>7 8<br>8 9<br>9 10</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h2><p>1: 70.00%<br>2: 80.00%<br>3: 90.00%<br>4: 100.00%<br>5: 100.00%<br>6: 100.00%<br>7: 100.00%<br>8: 90.00%<br>9: 80.00%<br>10: 70.00%</p>
+<h2 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h2><ol>
+<li>利用邻接表存储</li>
+<li>利用last tail算层数 </li>
+<li>有两个点还是过不了， 每日之邪</li>
+<li>改进终于过了，原因是类型转换，算完之后再转double肯定小数点后面都是零哇。。<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAXN 11000</span><br><span class="line">#define MAXA 50</span><br><span class="line">struct EdgeNode&#123;</span><br><span class="line">    int data;</span><br><span class="line">    EdgeNode *next;</span><br><span class="line">&#125;;</span><br><span class="line">struct Vnode&#123;</span><br><span class="line">    EdgeNode *FirstEdge;</span><br><span class="line">&#125;;</span><br><span class="line">Vnode V[MAXN];</span><br><span class="line">int NodeNum, ArcNum;</span><br><span class="line">void Create(Vnode V[])&#123;</span><br><span class="line">    cin &gt;&gt; NodeNum &gt;&gt; ArcNum;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; NodeNum; i++)&#123;</span><br><span class="line">        V[i].FirstEdge &#x3D; NULL;</span><br><span class="line">    &#125; </span><br><span class="line">    for(int i &#x3D; 0; i &lt; ArcNum; i++) &#123;</span><br><span class="line">        int a, b;</span><br><span class="line">        cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        EdgeNode *edge;</span><br><span class="line">        edge &#x3D; (EdgeNode*)malloc(sizeof(EdgeNode));</span><br><span class="line">        edge-&gt;data &#x3D; b;</span><br><span class="line">        edge-&gt;next &#x3D; V[a - 1].FirstEdge;</span><br><span class="line">        V[a - 1].FirstEdge &#x3D; edge;</span><br><span class="line">        edge &#x3D; (EdgeNode*)malloc(sizeof(EdgeNode));</span><br><span class="line">        edge-&gt;data &#x3D; a;</span><br><span class="line">        edge-&gt;next &#x3D; V[b - 1].FirstEdge;</span><br><span class="line">        V[b - 1].FirstEdge &#x3D; edge;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int SixDegreeBfs(int i) &#123;&#x2F;&#x2F;i是下标</span><br><span class="line">    queue&lt;int&gt; q;</span><br><span class="line">    int count &#x3D; 1, level &#x3D; 0, last &#x3D; i, tail &#x3D; 0;</span><br><span class="line">	int visited[MAXN] &#x3D; &#123;0&#125;;</span><br><span class="line">    visited[i] &#x3D; 1; &#x2F;&#x2F; visited中存下标</span><br><span class="line">    q.push(i);</span><br><span class="line">    while(q.size() &gt; 0)&#123;</span><br><span class="line">        int temp &#x3D; q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        EdgeNode *p &#x3D; V[temp].FirstEdge;</span><br><span class="line">        for(; p !&#x3D; NULL; p &#x3D; p-&gt;next)&#123;</span><br><span class="line">            if(visited[p-&gt;data - 1] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                visited[p-&gt;data - 1] &#x3D; 1;</span><br><span class="line">                q.push(p-&gt;data - 1);</span><br><span class="line">                tail &#x3D; p-&gt;data - 1;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(temp &#x3D;&#x3D; last)&#123;</span><br><span class="line">            last &#x3D; tail;</span><br><span class="line">            level++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(level &#x3D;&#x3D; 6) break;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    Create(V);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; NodeNum; i++)&#123;</span><br><span class="line">      int temp &#x3D; SixDegreeBfs(i);</span><br><span class="line">      printf(&quot;%d: %.2f&quot;, i+1, (double)(temp*1.0*100&#x2F;NodeNum));</span><br><span class="line">	  cout &lt;&lt; &quot;%&quot;;</span><br><span class="line">	  printf(&quot;\n&quot;, temp);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="07-图4-哈利·波特的考试-25-分"><a href="#07-图4-哈利·波特的考试-25-分" class="headerlink" title="07-图4 哈利·波特的考试 (25 分)"></a>07-图4 哈利·波特的考试 (25 分)</h1><p>哈利·波特要考试了，他需要你的帮助。这门课学的是用魔咒将一种动物变成另一种动物的本事。例如将猫变成老鼠的魔咒是haha，将老鼠变成鱼的魔咒是hehe等等。反方向变化的魔咒就是简单地将原来的魔咒倒过来念，例如ahah可以将老鼠变成猫。另外，如果想把猫变成鱼，可以通过念一个直接魔咒lalala，也可以将猫变老鼠、老鼠变鱼的魔咒连起来念：hahahehe。</p>
+<p>现在哈利·波特的手里有一本教材，里面列出了所有的变形魔咒和能变的动物。老师允许他自己带一只动物去考场，要考察他把这只动物变成任意一只指定动物的本事。于是他来问你：带什么动物去可以让最难变的那种动物（即该动物变为哈利·波特自己带去的动物所需要的魔咒最长）需要的魔咒最短？例如：如果只有猫、鼠、鱼，则显然哈利·波特应该带鼠去，因为鼠变成另外两种动物都只需要念4个字符；而如果带猫去，则至少需要念6个字符才能把猫变成鱼；同理，带鱼去也不是最好的选择。</p>
+<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式:"></a>输入格式:</h2><p>输入说明：输入第1行给出两个正整数N (≤100)和M，其中N是考试涉及的动物总数，M是用于直接变形的魔咒条数。为简单起见，我们将动物按1~N编号。随后M行，每行给出了3个正整数，分别是两种动物的编号、以及它们之间变形需要的魔咒的长度(≤100)，数字之间用空格分隔。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式:"></a>输出格式:</h2><p>输出哈利·波特应该带去考场的动物的编号、以及最长的变形魔咒的长度，中间以空格分隔。如果只带1只动物是不可能完成所有变形要求的，则输出0。如果有若干只动物都可以备选，则输出编号最小的那只。</p>
+<h2 id="输入样例-1"><a href="#输入样例-1" class="headerlink" title="输入样例:"></a>输入样例:</h2><p>6 11<br>3 4 70<br>1 2 1<br>5 4 50<br>2 6 50<br>5 6 60<br>1 3 70<br>4 6 60<br>3 6 80<br>5 1 100<br>2 4 60<br>5 2 80<br>输出样例:<br>4 70</p>
+<h2 id="Note-2"><a href="#Note-2" class="headerlink" title="Note"></a>Note</h2><ol>
+<li>利用floyd求出两点之间的最短路长度</li>
+<li>找到每行中最大的，比较哪一行最大的更小</li>
+</ol>
+<h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAX 1000</span><br><span class="line">int a[MAX][MAX];</span><br><span class="line">int main()&#123;</span><br><span class="line">    int num, arc;</span><br><span class="line">    cin &gt;&gt; num &gt;&gt; arc;</span><br><span class="line">    int i, j, k;</span><br><span class="line">    for(i &#x3D; 0; i &lt; num; i++)&#123;  &#x2F;&#x2F;初始化</span><br><span class="line">        for(j &#x3D; 0; j &lt; num; j++)&#123;</span><br><span class="line">            a[i][j] &#x3D; MAX;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i &#x3D; 0; i &lt; arc; i++)&#123;   &#x2F;&#x2F;输入</span><br><span class="line">        int tempa, tempb, data;</span><br><span class="line">        cin &gt;&gt; tempa &gt;&gt; tempb&gt;&gt; data;</span><br><span class="line">        a[tempa - 1][tempb - 1] &#x3D; a[tempb -1][tempa - 1] &#x3D; data;</span><br><span class="line">    &#125;</span><br><span class="line">    for(k &#x3D; 0; k &lt; num; k++)&#123;   &#x2F;&#x2F;floyd</span><br><span class="line">        for(i &#x3D; 0; i &lt; num; i++)&#123;</span><br><span class="line">            for(j &#x3D; 0; j &lt; num; j++)&#123;</span><br><span class="line">                if(a[i][k] + a[k][j] &lt; a[i][j])&#123;</span><br><span class="line">                    a[i][j] &#x3D; a[i][k] + a[k][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int minall &#x3D; MAX, maxpart, temp1, temp2 &#x3D; MAX;</span><br><span class="line">    for(i &#x3D; 0; i &lt; num; i++)&#123;   &#x2F;&#x2F;找大中最小</span><br><span class="line">        maxpart &#x3D; 0;</span><br><span class="line">        for(j &#x3D; 0; j &lt; num; j++)&#123;</span><br><span class="line">            if(a[i][j] &gt; maxpart &amp;&amp; i !&#x3D; j)&#123;</span><br><span class="line">                maxpart &#x3D; a[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(maxpart &lt; minall)&#123;</span><br><span class="line">               temp1 &#x3D; i + 1;</span><br><span class="line">               temp2 &#x3D; maxpart;</span><br><span class="line">			   minall &#x3D; maxpart;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(temp2 &lt; MAX) cout &lt;&lt; temp1 &lt;&lt; &quot; &quot; &lt;&lt; temp2;</span><br><span class="line">    else cout &lt;&lt; 0;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ol>
+<li>Floyd算法又称为插点法，是一种利用动态规划的思想寻找给定的加权图中多源点之间最短路径的算法</li>
+</ol>
+<h1 id="07-图5-Saving-James-Bond-Hard-Version-30-分"><a href="#07-图5-Saving-James-Bond-Hard-Version-30-分" class="headerlink" title="07-图5 Saving James Bond - Hard Version (30 分)"></a>07-图5 Saving James Bond - Hard Version (30 分)</h1><p>This time let us consider the situation in the movie “Live and Let Die” in which James Bond, the world’s most famous spy, was captured by a group of drug dealers. He was sent to a small piece of land at the center of a lake filled with crocodiles. There he performed the most daring action to escape – he jumped onto the head of the nearest crocodile! Before the animal realized what was happening, James jumped again onto the next big head… Finally he reached the bank before the last crocodile could bite him (actually the stunt man was caught by the big mouth and barely escaped with his extra thick boot).</p>
+<p>Assume that the lake is a 100 by 100 square one. Assume that the center of the lake is at (0,0) and the northeast corner at (50,50). The central island is a disk centered at (0,0) with the diameter of 15. A number of crocodiles are in the lake at various positions. Given the coordinates of each crocodile and the distance that James could jump, you must tell him a shortest path to reach one of the banks. The length of a path is the number of jumps that James has to make.</p>
+<h2 id="Input-Specification-1"><a href="#Input-Specification-1" class="headerlink" title="Input Specification:"></a>Input Specification:</h2><p>Each input file contains one test case. Each case starts with a line containing two positive integers N (≤100), the number of crocodiles, and D, the maximum distance that James could jump. Then N lines follow, each containing the (x,y) location of a crocodile. Note that no two crocodiles are staying at the same position.</p>
+<h2 id="Output-Specification-1"><a href="#Output-Specification-1" class="headerlink" title="Output Specification:"></a>Output Specification:</h2><p>For each test case, if James can escape, output in one line the minimum number of jumps he must make. Then starting from the next line, output the position (x,y) of each crocodile on the path, each pair in one line, from the island to the bank. If it is impossible for James to escape that way, simply give him 0 as the number of jumps. If there are many shortest paths, just output the one with the minimum first jump, which is guaranteed to be unique.</p>
+<h2 id="Sample-Input-1-1"><a href="#Sample-Input-1-1" class="headerlink" title="Sample Input 1:"></a>Sample Input 1:</h2><p>17 15<br>10 -21<br>10 21<br>-40 10<br>30 -50<br>20 40<br>35 10<br>0 -10<br>-25 22<br>40 -40<br>-30 30<br>-10 22<br>0 11<br>25 21<br>25 10<br>10 10<br>10 35<br>-30 10</p>
+<h2 id="Sample-Output-1-1"><a href="#Sample-Output-1-1" class="headerlink" title="Sample Output 1:"></a>Sample Output 1:</h2><p>4<br>0 11<br>10 21<br>10 35</p>
+<h2 id="Sample-Input-2-1"><a href="#Sample-Input-2-1" class="headerlink" title="Sample Input 2:"></a>Sample Input 2:</h2><p>4 13<br>-12 12<br>12 12<br>-12 -12<br>12 -12</p>
+<h2 id="Sample-Output-2-1"><a href="#Sample-Output-2-1" class="headerlink" title="Sample Output 2:"></a>Sample Output 2:</h2><p>0</p>
+<h2 id="Note-3"><a href="#Note-3" class="headerlink" title="Note"></a>Note</h2><ol>
+<li>题目要求求经过的节点个数最小，BFS自带这种属性</li>
+<li>利用path保存路径，图中遍历常用<h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAX 10010</span><br><span class="line">int dis, num;</span><br><span class="line">int safe &#x3D; 0;</span><br><span class="line">int visited[MAX] &#x3D; &#123;0&#125;;</span><br><span class="line">struct Crocodile&#123;</span><br><span class="line">    int x;</span><br><span class="line">    int y;</span><br><span class="line">&#125;crocs[MAX];</span><br><span class="line">bool Distance(int i, int j) &#123;</span><br><span class="line">    if(i &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        if(pow(abs(0 - crocs[j].x) , 2) + pow(abs(0 - crocs[j].y) , 2) &gt; pow(dis + 7.5, 2))</span><br><span class="line">            return 0;</span><br><span class="line">        else return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        if(pow(abs(crocs[i].x - crocs[j].x) , 2) + pow(abs(crocs[i].y - crocs[j].y) , 2) &gt; pow(dis, 2))</span><br><span class="line">            return 0;</span><br><span class="line">        else return 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">bool cmp(int i, int j)&#123;</span><br><span class="line">      if (pow(abs(0 - crocs[i].x) , 2) + pow(abs(0 - crocs[i].y) , 2) &lt; pow(abs(0 - crocs[j].x) , 2) + pow(abs(0 - crocs[j].y) , 2) ) return 1;</span><br><span class="line">	  else return 0;</span><br><span class="line">&#125;</span><br><span class="line">bool IsSafe(int i) &#123;</span><br><span class="line">    if(crocs[i].x &gt;&#x3D; 50 - dis || crocs[i].x &lt;&#x3D; dis - 50 || crocs[i].y &gt;&#x3D; 50 - dis || crocs[i].y &lt;&#x3D; dis -50)</span><br><span class="line">        return 1;</span><br><span class="line">    else return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    cin &gt;&gt; num &gt;&gt; dis;</span><br><span class="line">	if(dis &gt;42)&#123; cout &lt;&lt; 1; return 0; &#125; &#x2F;&#x2F;一步上岸</span><br><span class="line">    crocs[0].x &#x3D; crocs[0].y &#x3D; 0;</span><br><span class="line">    for(int i &#x3D; 1; i &lt;&#x3D; num; i++) &#123;</span><br><span class="line">        cin &gt;&gt; crocs[i].x &gt;&gt; crocs[i].y;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; first(num + 1 );    &#x2F;&#x2F;准备重新排序</span><br><span class="line">    for(int i &#x3D; 0; i &lt; num + 1; i++)&#123;</span><br><span class="line">        first[i] &#x3D; i;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(first.begin(), first.end(), cmp);</span><br><span class="line">    vector&lt;int&gt; path(num + 1, -1);  &#x2F;&#x2F;待深度遍历的路径</span><br><span class="line">    queue&lt;int&gt; q;                   &#x2F;&#x2F;BFS</span><br><span class="line">    int flag &#x3D; 0;</span><br><span class="line">    int ptr &#x3D; -1;</span><br><span class="line">    for(int i &#x3D; 1; i &lt;&#x3D; num; i++) &#123;</span><br><span class="line">        if(Distance(0, first[i]) &#x3D;&#x3D; 1 &amp;&amp; visited[first[i]] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            visited[first[i]] &#x3D; 1;</span><br><span class="line">            q.push(first[i]);</span><br><span class="line">            path[first[i]] &#x3D; 0;</span><br><span class="line">            if(IsSafe(first[i])) &#123; flag &#x3D; 1; ptr &#x3D; first[i]; break;&#125;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while(q.size() &gt; 0 &amp;&amp; flag &#x3D;&#x3D; 0)&#123;</span><br><span class="line">        int temp &#x3D; q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; num; i++)&#123;</span><br><span class="line">            if(visited[i] &#x3D;&#x3D; 0 &amp;&amp; Distance(temp, i))&#123;</span><br><span class="line">                q.push(i);</span><br><span class="line">                visited[i] &#x3D; 1;</span><br><span class="line">                path[i] &#x3D; temp;</span><br><span class="line">                if(IsSafe(i))&#123; flag &#x3D; 1; ptr &#x3D; i; break;&#125;  </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(flag &#x3D;&#x3D; 1)&#123;</span><br><span class="line">        int temp[MAX];</span><br><span class="line">        int cnt &#x3D; 0;</span><br><span class="line">        while(path[ptr] &gt; 0)&#123;</span><br><span class="line">            temp[cnt++] &#x3D; ptr;</span><br><span class="line">            ptr &#x3D; path[ptr];</span><br><span class="line">        &#125;</span><br><span class="line">        cout  &lt;&lt; cnt + 2 &lt;&lt; endl;</span><br><span class="line">		cout  &lt;&lt;  crocs[ptr].x  &lt;&lt; &quot; &quot; &lt;&lt; crocs[ptr].y &lt;&lt;endl;</span><br><span class="line">        for(int i &#x3D; cnt -1; i &gt;&#x3D; 0; i--)&#123;</span><br><span class="line">            cout  &lt;&lt;  crocs[temp[i]].x  &lt;&lt; &quot; &quot; &lt;&lt; crocs[temp[i]].y &lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">    &#125;</span><br><span class="line">	else if(!flag)</span><br><span class="line">		cout &lt;&lt; 0;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://s1.ax1x.com/2020/10/06/0UUsFU.md.png',
+  alipayImage: 'https://s1.ax1x.com/2020/10/06/0UUyYF.md.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Neoth</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2020/07/06/pat模拟拟/" target="_blank" title="DS-D">http://example.com/2020/07/06/pat模拟拟/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/08/newth/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          newth
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/26/%E2%80%9Cyouth%E2%80%9D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">西北大环</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#06-%E5%9B%BE2-Saving-James-Bond-Easy-Version-25-%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">06-图2 Saving James Bond - Easy Version (25 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Specification"><span class="nav-number">1.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Specification"><span class="nav-number">1.2.</span> <span class="nav-text">Output Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-1"><span class="nav-number">1.3.</span> <span class="nav-text">Sample Input 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output-1"><span class="nav-number">1.4.</span> <span class="nav-text">Sample Output 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-2"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input 2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output-2"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output 2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.7.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.8.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#06-%E5%9B%BE3-%E5%85%AD%E5%BA%A6%E7%A9%BA%E9%97%B4-30-%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">06-图3 六度空间 (30 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">输入格式:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">输出格式:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B"><span class="nav-number">2.3.</span> <span class="nav-text">输入样例:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-number">2.4.</span> <span class="nav-text">输出样例:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note-1"><span class="nav-number">2.5.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">2.6.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#07-%E5%9B%BE4-%E5%93%88%E5%88%A9%C2%B7%E6%B3%A2%E7%89%B9%E7%9A%84%E8%80%83%E8%AF%95-25-%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">07-图4 哈利·波特的考试 (25 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">3.1.</span> <span class="nav-text">输入格式:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">3.2.</span> <span class="nav-text">输出格式:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B-1"><span class="nav-number">3.3.</span> <span class="nav-text">输入样例:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note-2"><span class="nav-number">3.4.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-2"><span class="nav-number">3.5.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">3.6.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#07-%E5%9B%BE5-Saving-James-Bond-Hard-Version-30-%E5%88%86"><span class="nav-number">4.</span> <span class="nav-text">07-图5 Saving James Bond - Hard Version (30 分)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-Specification-1"><span class="nav-number">4.1.</span> <span class="nav-text">Input Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Specification-1"><span class="nav-number">4.2.</span> <span class="nav-text">Output Specification:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-1-1"><span class="nav-number">4.3.</span> <span class="nav-text">Sample Input 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output-1-1"><span class="nav-number">4.4.</span> <span class="nav-text">Sample Output 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input-2-1"><span class="nav-number">4.5.</span> <span class="nav-text">Sample Input 2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output-2-1"><span class="nav-number">4.6.</span> <span class="nav-text">Sample Output 2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note-3"><span class="nav-number">4.7.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-3"><span class="nav-number">4.8.</span> <span class="nav-text">Code</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 Hexo All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Hexo
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Neoth All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
